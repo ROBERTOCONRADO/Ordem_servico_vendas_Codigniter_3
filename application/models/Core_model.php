@@ -27,12 +27,42 @@ class Core_model extends CI_Model {
                 $this->session->set_userdata('last_id', $this->db->insert_id());
             }
             if($this->db->affected_rows() > 0) {
-                4this->session->set_flashdata('sucesso', 'Dados salvos com sucesso');
+                $this->session->set_flashdata('sucesso', 'Dados salvos com sucesso');
             }else {
                 $this->session->set_flasdata('error', 'Erro ao salvar dados');
             }
         }else {
 
+        }
+    }
+    public function update($tabela = NULL, $data = NULL, $condicao = NULL) {
+        if ($tabela && is_array($data) && is_array($condicao)) {
+            if($this->db->update($tabela, $data, $condicao)) {
+                $this->session->set_flashdata('sucesso', 'Dados salvos com sucesso');
+            }else {
+                $this->session->set_flashdata('error', 'Erro ao atualizar os dados');
+            }
+        }else {
+            return FALSE;
+        }
+    }
+    public function delete($tabela = NULL, $condicao = NULL) {
+        $this->db->db_debug = FALSE;
+        if ($tabela && is_array($condicao)) {
+            $status = $this->db->delete($tabela, $condicao);
+            $error = $this->db->error();
+            if(!$status) {
+                foreach ($error as $code) {
+                    if ($code = 1451) {
+                        $this->session->set_flashdata('error', 'Esse registro não poderá ser excliído, pois está sendo utilizado em outra tabela.');
+                    }
+                }
+            }else {
+                $this->session->set_flasdata('sucesso', 'Registro excluído com sucesso');
+            }
+            $this->db->db_debug = TRUE;
+        }else {
+            return FALSE;
         }
     }
 }
