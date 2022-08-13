@@ -29,7 +29,7 @@
                       <th>Usuário</th>
                       <th>Login</th>
                       <th>Ativo</th>
-                      <th class="text-right">Ações</th>
+                      <th class="text-right no-sort">Ações</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -40,7 +40,7 @@
                       <td><?php echo $user->email ?></td>
                       <td><?php echo $user->active ?></td>
                       <td class="text-right">
-                        <a title="Editar" href="" class="btn btn-sm btn-primary"><i class="fas fa-user-edit"></i></a>
+                        <a title="Editar" href="<?php echo base_url('usuarios/edit/'.$user->id); ?>" class="btn btn-sm btn-primary"><i class="fas fa-user-edit"></i></a>
                         <a title="excluir" href="" class="btn btn-sm btn-danger"><i class="fas fa-user-times"></i></a>
                       </td>
                     </tr>
