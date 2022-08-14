@@ -43,7 +43,7 @@ class Usuarios extends CI_Controller {
                 // exit();
 
                 $this->load->view('layout/header', $data);
-                $this->load->view('layout/edit');
+                $this->load->view('usuarios/edit');
                 $this->load->view('layout/footer');
             }
     }
