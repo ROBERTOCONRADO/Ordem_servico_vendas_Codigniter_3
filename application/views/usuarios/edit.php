@@ -43,9 +43,12 @@
                   </div>
 
                 <div class="form-group row">
-                  <div class="col-md-4">
+                  <div class="col-md-12">
                     <label>Ativo</label>
-                    
+                    <select class="form-control" name="active">
+                      <option value="0" <?php echo ($usuario->active == 0) ? 'selected' : '' ?>>Não</option>
+                      <option value="1" <?php echo ($usuario->active == 1) ? 'selected' : '' ?>>Sim</option>
+                    </select>  
                   </div>
                 </div>    
 
