@@ -38,9 +38,9 @@ class Usuarios extends CI_Controller {
                     'usuario' => $this->ion_auth->user($user_id)->row(),
                 );
 
-                echo '<pre>';
-                print_r($data['usuario']);
-                exit();
+                // echo '<pre>';
+                // print_r($data['usuario']);
+                // exit();
 
                 $this->load->view('layout/header', $data);
                 $this->load->view('layout/edit');
