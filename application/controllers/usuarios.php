@@ -73,12 +73,12 @@ class Usuarios extends CI_Controller {
                         unset($data['password']);
                     }
 
-                    if($this->core_model->update('users', $data, array('id' => $usuario_id))) {
+                    if($this->ion_auth->update($usuario_id, $data)) {
                         // [perfil_usuario] => 1
                         $perfil_usuario_db = $this->ion_auth->get_users_groups($usuario_id)->row();
                         $perfil_usuario_post = $this->input->post('perfil_usuario');
                         //se for diferente atualiza o grupo
-                        if($perfil_usuario_post != $perfil_usuario_db->id) {
+                        if($perfil_usuario_db->id != $perfil_usuario_post) {
                             $this->ion_auth->remove_from_group($perfil_usuario_db->id, $usuario_id);
                             $this->ion_auth->add_to_group($perfil_usuario_post, $usuario_id);
                         }
