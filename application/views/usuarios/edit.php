@@ -41,7 +41,9 @@
                     <input type="email" class="form-control" name="email" placeholder="Seu email de (login)" value="<?php echo $usuario->email; ?>">
                     <?php echo form_error('email', '<small class="form-text text-danger">','</small>'); ?>
                   </div>
+                </div>  
 
+                <div class="form-group row">
                   <div class="col-md-4">
                     <label>Usuário</label>
                     <input type="text" class="form-control" name="username" placeholder="Seu usuário" value="<?php echo $usuario->username; ?>">

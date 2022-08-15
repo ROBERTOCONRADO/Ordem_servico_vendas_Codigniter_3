@@ -47,10 +47,10 @@ class Usuarios extends CI_Controller {
                 // print_r($this->input->post());
                 // exit();
 
-                $this->form_validation->set_rules('first_name', 'nome', 'trim|required');
-                $this->form_validation->set_rules('last_name', 'nome', 'trim|required');
-                $this->form_validation->set_rules('email', 'trim|required|valid_email|callback_email_check');
-                $this->form_validation->set_rules('username', 'nome', 'trim|required');
+                $this->form_validation->set_rules('first_name', '', 'trim|required');
+                $this->form_validation->set_rules('last_name', '', 'trim|required');
+                $this->form_validation->set_rules('email', '', 'trim|required|valid_email|callback_email_check');
+                $this->form_validation->set_rules('username', '', 'trim|required|callback_username_check');
                 $this->form_validation->set_rules('password', 'senha', 'min_length[5]|max_length[255]');
                 $this->form_validation->set_rules('confirm_password', 'confirme', 'matches[password]');
                 if($this->form_validation->run()) {
@@ -73,6 +73,15 @@ class Usuarios extends CI_Controller {
         $usuario_id = $this->input->post('usuario_id');
         if($this->core_model->get_by_id('users', array('email' => $email, 'id !=' => $usuario_id))) {
             $this->form_validation->set_message('email_check', 'Esse email já existe.');
+            return FALSE;
+        }else {
+            return TRUE;
+        }
+    }
+    public function username_check($username) {
+        $usuario_id = $this->input->post('usuario_id');
+        if($this->core_model->get_by_id('users', array('username' => $username, 'id !=' => $usuario_id))) {
+            $this->form_validation->set_message('username_check', 'Esse usuário já existe.');
             return FALSE;
         }else {
             return TRUE;
