@@ -11,7 +11,7 @@ $autoload['libraries'] = array('ion_auth', 'database', 'form_validation', 'sessi
 $autoload['drivers'] = array();
 
 
-$autoload['helper'] = array('url');
+$autoload['helper'] = array('url', 'security', 'array');
 
 
 $autoload['config'] = array();

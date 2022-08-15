@@ -54,7 +54,38 @@ class Usuarios extends CI_Controller {
                 $this->form_validation->set_rules('password', 'senha', 'min_length[5]|max_length[255]');
                 $this->form_validation->set_rules('confirm_password', 'confirme', 'matches[password]');
                 if($this->form_validation->run()) {
-                    exit('Validado');
+                    $data = elements(
+                        array(
+                            'first_name',
+                            'last_name',
+                            'email',
+                            'username',
+                            'active',
+                            'password',
+                            'password',
+                        ), $this->input->post()
+                    );
+                    $data = $this->security->xss_clean($data);
+
+                    //verifica se foi passado o password
+                    $password = $this->input->post('password');
+                    if (!$password) {
+                        unset($data['password']);
+                    }
+
+                    if($this->core_model->update('users', $data, array('id' => $usuario_id))) {
+                        // [perfil_usuario] => 1
+                        $perfil_usuario_db = $this->ion_auth->get_users_groups($usuario_id)->row();
+                        $perfil_usuario_post = $this->input->post('perfil_usuario');
+                        if($perfil_usuario_post != $perfil_usuario_db->id) {
+                            $this->ion_auth->remove_from_group(1, $user_id);
+                        }
+                    }
+
+                    echo '<pre>';
+                    print_r($data);
+                    exit();
+
                 }else {
                     $data = array(
                         'titulo' => 'Editar usuário',
