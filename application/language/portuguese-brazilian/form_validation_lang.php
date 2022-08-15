@@ -9,9 +9,9 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$lang['form_validation_required'] = 'O campo {field} é obrigatório.';
+$lang['form_validation_required'] = 'Este campo é obrigatório.';
 $lang['form_validation_isset'] = 'O campo {field} deve conter um valor.';
-$lang['form_validation_valid_email'] = 'O campo {field} deve conter um email válido.';
+$lang['form_validation_valid_email'] = 'Insira um email válido.';
 $lang['form_validation_valid_emails'] = 'O campo {field} deve conter apenas emails válidos.';
 $lang['form_validation_valid_url'] = 'O campo {field} deve conter uma URL válida.';
 $lang['form_validation_valid_ip'] = 'O campo {field} deve conter um IP válido.';

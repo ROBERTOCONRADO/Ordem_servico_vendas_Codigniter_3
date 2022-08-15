@@ -33,19 +33,19 @@
                   <div class="col-md-4">
                     <label>Sobrenome</label>
                     <input type="text" class="form-control" name="last_name" placeholder="Segundo nome" value="<?php echo $usuario->last_name; ?>">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <?php echo form_error('last_name', '<small class="form-text text-danger">','</small>'); ?>
                   </div>
 
                   <div class="col-md-4">
                     <label>E-mail&nbsp;(Login)</label>
                     <input type="email" class="form-control" name="email" placeholder="Seu email de (login)" value="<?php echo $usuario->email; ?>">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <?php echo form_error('email', '<small class="form-text text-danger">','</small>'); ?>
                   </div>
 
                   <div class="col-md-4">
                     <label>Usuário</label>
                     <input type="text" class="form-control" name="username" placeholder="Seu usuário" value="<?php echo $usuario->username; ?>">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <?php echo form_error('username', '<small class="form-text text-danger">','</small>'); ?>
                   </div>
 
                   <div class="col-md-4">
@@ -69,13 +69,13 @@
                     <div class="col-md-6">
                       <label>Senha</label>
                       <input type="password" class="form-control" name="password" placeholder="Sua senha">
-                      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                      <?php echo form_error('password', '<small class="form-text text-danger">','</small>'); ?>
                     </div>
 
                     <div class="col-md-6">
                       <label>Confirme</label>
                       <input type="password" class="form-control" name="password" placeholder="Confirme sua senha">
-                      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                      <?php echo form_error('confirme_password', '<small class="form-text text-danger">','</small>'); ?>
                     </div>
 
                     <input type="hidden" name="usuario_id" value="<?php echo $usuario->id?>">
