@@ -29,6 +29,15 @@ class Usuarios extends CI_Controller {
         $this->load->view('usuarios/index');
         $this->load->view('layout/footer');
     }
+    public function add() {
+        $data = array(
+            'titulo' => 'Cadastrar usuário',
+            );
+            
+            $this->load->view('layout/header', $data);
+            $this->load->view('usuarios/add');
+            $this->load->view('layout/footer');
+    }
     public function edit($usuario_id = NULL) {
             if (!$usuario_id || !$this->ion_auth->user($usuario_id)->row()) {
                 $this->session->set_flashdata('error', 'Usuário não encontrado');
