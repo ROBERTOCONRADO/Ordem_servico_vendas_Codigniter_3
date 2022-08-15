@@ -51,8 +51,8 @@ class Usuarios extends CI_Controller {
                 $this->form_validation->set_rules('last_name', 'nome', 'trim|required');
                 $this->form_validation->set_rules('email', 'nome', 'trim|required');
                 $this->form_validation->set_rules('username', 'nome', 'trim|required');
-                $this->form_validation->set_rules('password', 'nome', 'trim|required');
-                $this->form_validation->set_rules('confirme_password', 'nome', 'trim|required');
+                $this->form_validation->set_rules('password', 'senha', 'min_length[5]|max_length[255]');
+                $this->form_validation->set_rules('confirme_password', 'confirme', 'matches[password]');
                 if($this->form_validation->run()) {
                     exit('Validado');
                 }else {
