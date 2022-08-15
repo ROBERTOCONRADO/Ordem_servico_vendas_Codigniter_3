@@ -17,9 +17,10 @@ class Core_model extends CI_Model {
           $this->db->where($condicao);  
           $this->db->limit(1);  
           return $this->db->get($tabela)->row();
-    }else {
-        return FALSE;
-    }
+        }else {
+            return FALSE;
+        }
+    }    
     public function insert($tabela = NULL, $data = NULL, $get_last_id = NULL) {
         if($tabela && is_array($data)) {
             $this->db->insert($tabela, $data);
@@ -29,10 +30,10 @@ class Core_model extends CI_Model {
             if($this->db->affected_rows() > 0) {
                 $this->session->set_flashdata('sucesso', 'Dados salvos com sucesso');
             }else {
-                $this->session->set_flasdata('error', 'Erro ao salvar dados');
+                $this->session->set_flashdata('error', 'Erro ao salvar dados');
             }
         }else {
-
+            return FALSE; // obs
         }
     }
     public function update($tabela = NULL, $data = NULL, $condicao = NULL) {
@@ -58,12 +59,11 @@ class Core_model extends CI_Model {
                     }
                 }
             }else {
-                $this->session->set_flasdata('sucesso', 'Registro excluído com sucesso');
+                $this->session->set_flashdata('sucesso', 'Registro excluído com sucesso');
             }
             $this->db->db_debug = TRUE;
         }else {
             return FALSE;
         }
     }
-}
 }

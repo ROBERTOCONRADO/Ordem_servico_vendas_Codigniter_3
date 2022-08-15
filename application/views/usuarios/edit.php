@@ -74,8 +74,8 @@
 
                     <div class="col-md-6">
                       <label>Confirme</label>
-                      <input type="password" class="form-control" name="confirme_password" placeholder="Confirme sua senha">
-                      <?php echo form_error('confirme_password', '<small class="form-text text-danger">','</small>'); ?>
+                      <input type="password" class="form-control" name="confirm_password" placeholder="Confirme sua senha">
+                      <?php echo form_error('confirm_password', '<small class="form-text text-danger">','</small>'); ?>
                     </div>
 
                     <input type="hidden" name="usuario_id" value="<?php echo $usuario->id?>">

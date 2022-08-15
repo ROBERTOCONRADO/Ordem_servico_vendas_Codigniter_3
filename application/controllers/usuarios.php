@@ -52,7 +52,7 @@ class Usuarios extends CI_Controller {
                 $this->form_validation->set_rules('email', 'trim|required|valid_email|callback_email_check');
                 $this->form_validation->set_rules('username', 'nome', 'trim|required');
                 $this->form_validation->set_rules('password', 'senha', 'min_length[5]|max_length[255]');
-                $this->form_validation->set_rules('confirme_password', 'confirme', 'matches[password]');
+                $this->form_validation->set_rules('confirm_password', 'confirme', 'matches[password]');
                 if($this->form_validation->run()) {
                     exit('Validado');
                 }else {
