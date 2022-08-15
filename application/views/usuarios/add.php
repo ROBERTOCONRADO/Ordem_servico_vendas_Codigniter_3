@@ -21,24 +21,24 @@
               <a title="Voltar" href="<?php echo base_url('usuarios'); ?>" class="btn btn-success btn-sm float-right"><i class="fas fa-arrow-left"></i>&nbsp;Voltar</a>
             </div>
             <div class="card-body">
-              <form method="POST" name="form_edit">
+              <form method="POST" name="form_add">
                 <div class="form-group row">
                   
                   <div class="col-md-4">
                     <label>Nome</label>
-                    <input type="text" class="form-control" name="first_name" placeholder="Primeiro nome" value="">
+                    <input type="text" class="form-control" name="first_name" placeholder="Primeiro nome" value="<?php echo set_value('first_name'); ?>">
                     <?php echo form_error('first_name', '<small class="form-text text-danger">','</small>'); ?>
                   </div>
 
                   <div class="col-md-4">
                     <label>Sobrenome</label>
-                    <input type="text" class="form-control" name="last_name" placeholder="Segundo nome" value="">
+                    <input type="text" class="form-control" name="last_name" placeholder="Segundo nome" value="<?php echo set_value('last_name'); ?>">
                     <?php echo form_error('last_name', '<small class="form-text text-danger">','</small>'); ?>
                   </div>
 
                   <div class="col-md-4">
                     <label>E-mail&nbsp;(Login)</label>
-                    <input type="email" class="form-control" name="email" placeholder="Seu email de (login)" value="">
+                    <input type="email" class="form-control" name="email" placeholder="Seu email de (login)" value="<?php echo set_value('email'); ?>">
                     <?php echo form_error('email', '<small class="form-text text-danger">','</small>'); ?>
                   </div>
                 </div>  
@@ -46,7 +46,7 @@
                 <div class="form-group row">
                   <div class="col-md-4">
                     <label>Usuário</label>
-                    <input type="text" class="form-control" name="username" placeholder="Seu usuário" value="">
+                    <input type="text" class="form-control" name="username" placeholder="Seu usuário" value="<?php echo set_value('username'); ?>">
                     <?php echo form_error('username', '<small class="form-text text-danger">','</small>'); ?>
                   </div>
 

@@ -30,13 +30,28 @@ class Usuarios extends CI_Controller {
         $this->load->view('layout/footer');
     }
     public function add() {
-        $data = array(
-            'titulo' => 'Cadastrar usuário',
-            );
-            
-            $this->load->view('layout/header', $data);
-            $this->load->view('usuarios/add');
-            $this->load->view('layout/footer');
+        
+
+            $this->form_validation->set_rules('first_name', '', 'trim|required');
+            $this->form_validation->set_rules('last_name', '', 'trim|required');
+            $this->form_validation->set_rules('email', '', 'trim|required|valid_email|is_unique[users.email]');
+            $this->form_validation->set_rules('username', '', 'trim|required|is_unique[users.username');
+            $this->form_validation->set_rules('password', 'senha', 'required|min_length[5]|max_length[255]');
+            $this->form_validation->set_rules('confirm_password', 'confirme', 'matches[password]');
+
+            if($this->form_validation->run()) {
+                
+                
+
+            } else {
+                //erro de validação
+                $data = array(
+                    'titulo' => 'Cadastrar usuário',
+                );
+                $this->load->view('layout/header', $data);
+                $this->load->view('usuarios/add');
+                $this->load->view('layout/footer');
+            }
     }
     public function edit($usuario_id = NULL) {
             if (!$usuario_id || !$this->ion_auth->user($usuario_id)->row()) {
