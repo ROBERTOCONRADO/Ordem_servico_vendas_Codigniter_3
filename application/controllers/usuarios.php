@@ -52,10 +52,12 @@ class Usuarios extends CI_Controller {
                 $additional_data = $this->security->xss_clean($additional_data);
                 $group = $this->security->xss_clean($group);
 
-                // $this->ion_auth->register($username, $password, $email, $additional_data, $group)
-                // echo '<pre>';
-                // print_r($additional_data);
-                // exit();
+                if ($this->ion_auth->register($username, $password, $email, $additional_data, $group)) {
+                    $this->session->set_flashdata('sucesso', 'Dados salvos com sucesso');
+                }else {
+                    $this->session->set_flashdata('error', 'Erro ao salvar os dados');
+                }
+                redirect('usuarios');
 
             } else {
                 //erro de validação
