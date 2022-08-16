@@ -30,7 +30,6 @@ class Usuarios extends CI_Controller {
         $this->load->view('layout/footer');
     }
     public function add() {
-        
 
             $this->form_validation->set_rules('first_name', '', 'trim|required');
             $this->form_validation->set_rules('last_name', '', 'trim|required');
@@ -41,7 +40,17 @@ class Usuarios extends CI_Controller {
 
             if($this->form_validation->run()) {
                 
-                
+                $username = $this->input->post('username');
+                $password = $this->input->post('password');
+                $email = $this->input->post('email');
+                $additional_data = array(
+                'first_name' => $this->input->post('first_name'),
+                'last_name' => $this->input->post('last_name'),
+                'active' => $this->input->post('active'),
+                );
+                $group = array('1'); // Sets user to admin.
+
+                $this->ion_auth->register($username, $password, $email, $additional_data, $group)
 
             } else {
                 //erro de validação
