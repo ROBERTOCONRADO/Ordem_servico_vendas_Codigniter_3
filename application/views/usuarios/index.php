@@ -86,10 +86,10 @@
                                 <span aria-hidden="true">×</span>
                               </button>
                             </div>
-                            <div class="modal-body">Selecione  <b>OK</b>  se deseja mesmo excluir.</div>
+                            <div class="modal-body">Selecione  <b>Confirmar</b>  se deseja mesmo excluir.</div>
                             <div class="modal-footer">
                               <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                              <a class="btn btn-danger" href="login.html">OK</a>
+                              <a class="btn btn-danger" href="<?php echo base_url('usuarios/del/' . $user->id); ?>">Confirmar</a>
                             </div>
                           </div>
                         </div>
