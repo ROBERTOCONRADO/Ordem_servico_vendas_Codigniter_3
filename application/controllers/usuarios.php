@@ -34,23 +34,28 @@ class Usuarios extends CI_Controller {
             $this->form_validation->set_rules('first_name', '', 'trim|required');
             $this->form_validation->set_rules('last_name', '', 'trim|required');
             $this->form_validation->set_rules('email', '', 'trim|required|valid_email|is_unique[users.email]');
-            $this->form_validation->set_rules('username', '', 'trim|required|is_unique[users.username');
+            $this->form_validation->set_rules('username', '', 'trim|required|is_unique[users.username]');
             $this->form_validation->set_rules('password', 'senha', 'required|min_length[5]|max_length[255]');
             $this->form_validation->set_rules('confirm_password', 'confirme', 'matches[password]');
 
             if($this->form_validation->run()) {
                 
-                $username = $this->input->post('username');
-                $password = $this->input->post('password');
-                $email = $this->input->post('email');
+                $username = $this->security->xss_clean($this->input->post('username'));
+                $password = $this->security->xss_clean($this->input->post('password'));
+                $email = $this->security->xss_clean($this->input->post('email'));
                 $additional_data = array(
                 'first_name' => $this->input->post('first_name'),
                 'last_name' => $this->input->post('last_name'),
                 'active' => $this->input->post('active'),
                 );
-                $group = array('1'); // Sets user to admin.
+                $group = array($this->input->post('perfil_usuario')); // Sets user to admin.
+                $additional_data = $this->security->xss_clean($additional_data);
+                $group = $this->security->xss_clean($group);
 
-                $this->ion_auth->register($username, $password, $email, $additional_data, $group)
+                // $this->ion_auth->register($username, $password, $email, $additional_data, $group)
+                // echo '<pre>';
+                // print_r($additional_data);
+                // exit();
 
             } else {
                 //erro de validação
