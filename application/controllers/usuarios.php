@@ -46,6 +46,7 @@ class Usuarios extends CI_Controller {
                 $additional_data = array(
                 'first_name' => $this->input->post('first_name'),
                 'last_name' => $this->input->post('last_name'),
+                'username' => $this->input->post('username'),
                 'active' => $this->input->post('active'),
                 );
                 $group = array($this->input->post('perfil_usuario')); // Sets user to admin.
