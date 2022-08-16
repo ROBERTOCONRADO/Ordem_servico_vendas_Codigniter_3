@@ -155,7 +155,7 @@ class Usuarios extends CI_Controller {
             $this->session->set_flashdata('sucesso', 'Usuário excluido com sucesso');
             redirect('usuarios');
         }else {
-            $this->session->set_flashdata('error', 'Administrador não pode ser excluido');
+            $this->session->set_flashdata('error', 'O administrador não pode ser excluido');
             redirect('usuarios');
         }
     }
