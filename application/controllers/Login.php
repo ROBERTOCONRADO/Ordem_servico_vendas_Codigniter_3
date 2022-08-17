@@ -14,6 +14,8 @@ class Login extends CI_Controller {
             $this->session->set_flashdata('error', 'Verifique seu e-mail ou senha');
             $this->load->view('layout/header');
             $this->load->view('login/index');
+            $this->load->view('layout/footer');
+
         }
     }
 }

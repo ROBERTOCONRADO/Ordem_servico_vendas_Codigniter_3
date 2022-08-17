@@ -1,5 +1,6 @@
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
+<?php if (!$this->router->fetch_class() == 'login') : ?>
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Copyright &copy; System Ordem <?php echo date('Y'); ?>&nbsp;|&nbsp;By Roberto Conrado</span>
@@ -7,6 +8,7 @@
         </div>
       </footer>
       <!-- End of Footer -->
+<?php endif; ?>
 
     </div>
     <!-- End of Content Wrapper -->
