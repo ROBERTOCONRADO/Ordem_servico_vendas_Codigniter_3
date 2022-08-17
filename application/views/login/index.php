@@ -29,7 +29,7 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Seja bem-vindo!</h1>
                   </div>
-                  <form class="user" name="form-index" method="POST">
+                  <form class="user" name="form-auth" method="POST" action="<?php echo base_url('login/auth'); ?>">
                     <div class="form-group">
                       <input type="email" name="email" class="form-control form-control-user" placeholder="Entre com seu e-mail...">
                     </div>
