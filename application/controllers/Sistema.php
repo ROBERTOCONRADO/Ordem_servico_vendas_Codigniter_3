@@ -16,6 +16,30 @@ class Sistema extends CI_Controller {
             'titulo' => 'Editar informações do sistema',
             'sistema' => $this->core_model->get_by_id('sistema', array('sistema_id' => 1)),
         );
+
+        $this->form_validation->set_rules('sistema_razao_social', 'Razão social', 'required|min_length[5]|max_length[145]');
+        $this->form_validation->set_rules('sistema_nome_fantasia', 'Nome fantasia', 'required|min_length[5]|max_length[145]');
+        $this->form_validation->set_rules('sistema_cnpj', 'CNPJ', 'required|exact_length[18]');
+        $this->form_validation->set_rules('sistema_ie', '', 'required|max_length[25]');
+        $this->form_validation->set_rules('sistema_telefone_fixo', '', 'max_length[25]');
+        $this->form_validation->set_rules('sistema_telefone_movel', '', 'required|max_length[25]');
+        $this->form_validation->set_rules('sistema_email', '', 'required|valid_email|max_length[100]');
+        $this->form_validation->set_rules('sistema_site_url', 'URL do site', 'required|valid_url|max_length[100]');
+        $this->form_validation->set_rules('sistema_cep', 'CEP', 'required|exact_length[9]');
+        $this->form_validation->set_rules('sistema_endereco', '', 'required|max_length[145]');
+        $this->form_validation->set_rules('sistema_numero', '', 'max_length[25]');
+        $this->form_validation->set_rules('sistema_cidade', '', 'required|max_length[45]');
+        $this->form_validation->set_rules('sistema_estado', '', 'required|exact_length[2]');
+        $this->form_validation->set_rules('sistema_txt_ordem_servico', '', 'required|max_length[500]');
+
+        if($this->form_validation->run()) {
+            
+            //  echo '<pre>'; print_r($this->input->post());exit();
+        }else {
+            $this->load->view('layout/header', $data);
+            $this->load->view('sistema/index');
+            $this->load->view('layout/footer');
+        }
         /*
         [sistema_id] => 1
         [sistema_razao_social] => system ordem inc
@@ -34,9 +58,5 @@ class Sistema extends CI_Controller {
         [sistema_txt_ordem_servico] => 
         [sistema_data_alteracao] => 2022-08-17 12:28:47
         */
-        // echo '<pre>'; print_r($data['sistema']);exit();
-        $this->load->view('layout/header', $data);
-        $this->load->view('sistema/index');
-        $this->load->view('layout/footer');
     }
 }
