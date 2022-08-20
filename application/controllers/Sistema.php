@@ -15,9 +15,9 @@ class Sistema extends CI_Controller {
         $data = array(
             'titulo' => 'Editar informações do sistema',
 
-            'script' => array(
-                'vendor/mask/jquery.mask.min.js'
-                'vendor/mask/app.js'
+            'scripts' => array(
+                'vendor/mask/jquery.mask.min.js',
+                'vendor/mask/app.js',
             ),
 
             'sistema' => $this->core_model->get_by_id('sistema', array('sistema_id' => 1)),

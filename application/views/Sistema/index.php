@@ -64,7 +64,7 @@
 
                   <div class="col-md-3">
                     <label>CNPJ</label>
-                    <input type="text" class="form-control form-control-user" name="sistema_cnpj" placeholder="CNPJ" value="<?php echo $sistema->sistema_cnpj; ?>">
+                    <input type="text" class="form-control form-control-user cnpj" name="sistema_cnpj" placeholder="CNPJ" value="<?php echo $sistema->sistema_cnpj; ?>">
                     <?php echo form_error('sistema_cnpj', '<small class="form-text text-danger">','</small>'); ?>
                   </div>
 
@@ -80,13 +80,13 @@
                   
                   <div class="col-md-3">
                     <label>Telefone Fixo</label>
-                    <input type="text" class="form-control form-control-user" name="sistema_telefone_fixo" placeholder="Telefone fixo" value="<?php echo $sistema->sistema_telefone_fixo; ?>">
+                    <input type="text" class="form-control form-control-user sp_celphones" name="sistema_telefone_fixo" placeholder="Telefone fixo" value="<?php echo $sistema->sistema_telefone_fixo; ?>">
                     <?php echo form_error('sistema_telefone_fixo', '<small class="form-text text-danger">','</small>'); ?>
                   </div>
 
                   <div class="col-md-3">
                     <label>Telefone Móvel</label>
-                    <input type="text" class="form-control form-control-user" name="sistema_telefone_movel" placeholder="Telefone móvel" value="<?php echo $sistema->sistema_telefone_movel; ?>">
+                    <input type="text" class="form-control form-control-user sp_celphones" name="sistema_telefone_movel" placeholder="Telefone móvel" value="<?php echo $sistema->sistema_telefone_movel; ?>">
                     <?php echo form_error('sistema_telefone_movel', '<small class="form-text text-danger">','</small>'); ?>
                   </div>
 
@@ -114,14 +114,14 @@
 
                   <div class="col-md-1">
                     <label>UF</label>
-                    <input type="text" class="form-control form-control-user" name="sistema_estado" placeholder="UF" value="<?php echo $sistema->sistema_estado; ?>">
+                    <input type="text" class="form-control form-control-user uf" name="sistema_estado" placeholder="UF" value="<?php echo $sistema->sistema_estado; ?>">
                     <?php echo form_error('sistema_estado', '<small class="form-text text-danger">','</small>'); ?>
                   </div>
 
 
                   <div class="col-md-3">
                     <label>CEP</label>
-                    <input type="text" class="form-control form-control-user" name="sistema_cep" placeholder="CEP" value="<?php echo $sistema->sistema_cep; ?>">
+                    <input type="text" class="form-control form-control-user cep" name="sistema_cep" placeholder="CEP" value="<?php echo $sistema->sistema_cep; ?>">
                     <?php echo form_error('sistema_cep', '<small class="form-text text-danger">','</small>'); ?>
                   </div>
 
