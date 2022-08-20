@@ -53,10 +53,11 @@ class Sistema extends CI_Controller {
                     'sistema_txt_ordem_servico',
                 ), $this->input->post()
             );
+            $data = html_escape($data);
 
             $this->core_model->update('sistema', $data, array('sistema_id' => 1));
             redirect('sistema');
-            
+
         }else {
             $this->load->view('layout/header', $data);
             $this->load->view('sistema/index');
