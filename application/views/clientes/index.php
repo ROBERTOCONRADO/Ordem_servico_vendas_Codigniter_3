@@ -60,7 +60,7 @@
                       <th>CPF / CNPJ</th>
                       <th>Tipo cliente</th>
                       <th class="text-center">Ativo</th>
-                      <th class="text-right no-sort">Ações</th>
+                      <th class="text-right no-sort pr-3">Ações</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -69,6 +69,7 @@
                       <td><?php echo $cliente->cliente_id ?></td>
                       <td><?php echo $cliente->cliente_nome ?></td>
                       <td><?php echo $cliente->cliente_cpf_cnpj ?></td>
+                      <td><?php echo ($cliente->cliente_tipo == 1 ? 'Pessoa física' : 'Pessoa jurídica') ?></td>
                       <td class="text-center pr-4"><?php echo ($cliente->cliente_ativo == 1 ? '<span class="badge badge-info btn-sm">Sim</span>' : '<span class="badge badge-warning btn-sm">Não</span>') ?></td>
                       <td class="text-right">
                         <a title="Editar" href="<?php echo base_url('clientes/edit/'.$cliente->cliente_id); ?>" class="btn btn-sm btn-primary"><i class="fas fa-user-edit"></i></a>

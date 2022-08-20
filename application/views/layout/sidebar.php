@@ -2,11 +2,11 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('/'); ?>">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">Ordem System</div>
       </a>
 
       <!-- Divider -->
@@ -14,9 +14,9 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="index.html">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+        <a class="nav-link" href="<?php echo base_url('/'); ?>">
+        &nbsp;<i class="fas fa-home"></i>
+          <span>Home</span></a>
       </li>
 
       <!-- Divider -->
@@ -24,12 +24,12 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Cadastros
+      &nbsp;Cadastros
       </div>
 
       <li class="nav-item">
         <a title="Gerenciar clientes" class="nav-link" href="<?php echo base_url('clientes'); ?>">
-          <i class="fas fa-user-tie"></i>
+        &nbsp;<i class="fas fa-user-tie"></i>
           <span>Clientes</span></a>
       </li>
 

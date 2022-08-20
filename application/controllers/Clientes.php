@@ -22,7 +22,7 @@ class Clientes extends CI_Controller {
                 'vendor/datatables/dataTables.bootstrap4.min.js',
                 'vendor/datatables/app.js'
             ),
-            'clientes' => $this->core_model->get+all('clientes'),
+            'clientes' => $this->core_model->get_all('clientes'),
         );
         $this->load->view('layout/header', $data);
         $this->load->view('clientes/index');
