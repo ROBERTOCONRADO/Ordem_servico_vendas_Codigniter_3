@@ -34,29 +34,45 @@ class Sistema extends CI_Controller {
 
         if($this->form_validation->run()) {
             
-            //  echo '<pre>'; print_r($this->input->post());exit();
+            //   echo '<pre>'; print_r($this->input->post());exit();
+            $data = elements(
+                array(
+                    'sistema_razao_social',
+                    'sistema_nome_fantasia',
+                    'sistema_cnpj',
+                    'sistema_ie',
+                    'sistema_telefone_fixo',
+                    'sistema_telefone_movel',
+                    'sistema_email',
+                    'sistema_site_url',
+                    'sistema_cep',
+                    'sistema_endereco',
+                    'sistema_numero',
+                    'sistema_cidade',
+                    'sistema_estado',
+                    'sistema_txt_ordem_servico',
+                ), $this->input->post()
+            );
         }else {
             $this->load->view('layout/header', $data);
             $this->load->view('sistema/index');
             $this->load->view('layout/footer');
         }
         /*
-        [sistema_id] => 1
         [sistema_razao_social] => system ordem inc
         [sistema_nome_fantasia] => Sistema Ordem Now
         [sistema_cnpj] => 87.372.921/0001-63
-        [sistema_ie] => 
-        [sistema_telefone_fixo] => 
-        [sistema_telefone_movel] => 
-        [sistema_email] => ordemnow@contato.com.br
+        [sistema_ie] => 240.32747-31
+        [sistema_telefone_fixo] => 4133333333
+        [sistema_telefone_movel] => 4199999999
         [sistema_site_url] => http://localhost/ordem[u]/
+        [sistema_email] => ordemnow@contato.com.br
+        [sistema_cidade] => Vitoria da Conquista
+        [sistema_estado] => BA
         [sistema_cep] => 80429-000
         [sistema_endereco] => Rua Natal
         [sistema_numero] => 800
-        [sistema_cidade] => Vitoria da Conquista
-        [sistema_estado] => BA
-        [sistema_txt_ordem_servico] => 
-        [sistema_data_alteracao] => 2022-08-17 12:28:47
+        [sistema_txt_ordem_servico] => Testando
         */
     }
 }
