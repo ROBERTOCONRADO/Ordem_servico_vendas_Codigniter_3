@@ -38,7 +38,7 @@
 
                   <div class="col-md-2">
                     <label>CPF ou CNPJ</label>
-                    <input type="text" class="form-control form-control-user" name="cliente_cpf_cnpj" placeholder="CPF ou CNPJ" value="<?php echo $cliente->cliente_cpf_cnpj; ?>">
+                    <input type="text" class="form-control form-control-user cnpj" name="cliente_cpf_cnpj" placeholder="CPF ou CNPJ" value="<?php echo $cliente->cliente_cpf_cnpj; ?>">
                     <?php echo form_error('cliente_cpf_cnpj', '<small class="form-text text-danger">','</small>'); ?>
                   </div>
 
@@ -57,16 +57,56 @@
                     <?php echo form_error('cliente_email', '<small class="form-text text-danger">','</small>'); ?>
                   </div>
 
-                  <div class="col-md-4">
+                  <div class="col-md-2">
                     <label>Telefone Fixo</label>
-                    <input type="text" class="form-control form-control-user" name="cliente_telefone" placeholder="Telefone fixo" value="<?php echo $cliente->cliente_telefone; ?>">
+                    <input type="text" class="form-control form-control-user sp_celphones" name="cliente_telefone" placeholder="Telefone fixo" value="<?php echo $cliente->cliente_telefone; ?>">
                     <?php echo form_error('cliente_telefone', '<small class="form-text text-danger">','</small>'); ?>
                   </div>
 
-                  <div class="col-md-4">
+                  <div class="col-md-2">
                     <label>Telefone Celular</label>
-                    <input type="text" class="form-control form-control-user" name="cliente_celular" placeholder="Telefone Celular" value="<?php echo $cliente->cliente_celular; ?>">
+                    <input type="text" class="form-control form-control-user sp_celphones" name="cliente_celular" placeholder="Telefone Celular" value="<?php echo $cliente->cliente_celular; ?>">
                     <?php echo form_error('cliente_celular', '<small class="form-text text-danger">','</small>'); ?>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label>Data Nascimento</label>
+                    <input type="date" class="form-control form-control-user cep" name="cliente_data_nascimento" value="<?php echo $cliente->cliente_data_nascimento; ?>">
+                    <?php echo form_error('cliente_data_nascimento', '<small class="form-text text-danger">','</small>'); ?>
+                  </div>
+
+                </div>  
+                
+                <div class="form-group row">
+
+                  <div class="col-md-2">
+                    <label>CEP</label>
+                    <input type="text" class="form-control form-control-user cep" name="cliente_cep" placeholder="CEP" value="<?php echo $cliente->cliente_cep; ?>">
+                    <?php echo form_error('cliente_cep', '<small class="form-text text-danger">','</small>'); ?>
+                  </div>
+
+                  <div class="col-md-3">
+                    <label>Endereço</label>
+                    <input type="text" class="form-control form-control-user" name="cliente_endereco" placeholder="Endereco" value="<?php echo $cliente->cliente_endereco; ?>">
+                    <?php echo form_error('cliente_endereco', '<small class="form-text text-danger">','</small>'); ?>
+                  </div>
+
+                  <div class="col-md-3">
+                    <label>Número</label>
+                    <input type="text" class="form-control form-control-user" name="cliente_numero_endereco" placeholder="Número da residência" value="<?php echo $cliente->cliente_numero_endereco; ?>">
+                    <?php echo form_error('cliente_numero_endereco', '<small class="form-text text-danger">','</small>'); ?>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label>Bairro</label>
+                    <input type="text" class="form-control form-control-user" name="cliente_bairro" placeholder="Bairro" value="<?php echo $cliente->cliente_bairro; ?>">
+                    <?php echo form_error('cliente_bairro', '<small class="form-text text-danger">','</small>'); ?>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label>CEP</label>
+                    <input type="text" class="form-control form-control-user cep" name="cliente_cep" placeholder="CEP" value="<?php echo $cliente->cliente_cep; ?>">
+                    <?php echo form_error('cliente_cep', '<small class="form-text text-danger">','</small>'); ?>
                   </div>
                   
                 </div>  
