@@ -17,9 +17,7 @@
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <a title="Voltar" href="<?php echo base_url('clientes'); ?>" class="btn btn-success btn-sm float-right"><i class="fas fa-arrow-left"></i>&nbsp;Voltar</a>
-            </div>
+            
             <div class="card-body">
               <form class="user" method="POST" name="form_edit">
                 <div class="form-group row">
@@ -102,8 +100,11 @@
                     <input type="text" class="form-control form-control-user" name="cliente_bairro" placeholder="Bairro" value="<?php echo $cliente->cliente_bairro; ?>">
                     <?php echo form_error('cliente_bairro', '<small class="form-text text-danger">','</small>'); ?>
                   </div>
+                </div>  
 
-                  <div class="col-md-4">
+                <div class="form-group row">  
+
+                  <div class="col-md-3">
                     <label>Cidade</label>
                     <input type="text" class="form-control form-control-user cep" name="cliente_cidade" placeholder="Cidade" value="<?php echo $cliente->cliente_cidade; ?>">
                     <?php echo form_error('cliente_cidade', '<small class="form-text text-danger">','</small>'); ?>
@@ -115,7 +116,7 @@
                     <?php echo form_error('cliente_estado', '<small class="form-text text-danger">','</small>'); ?>
                   </div>
 
-                  <div class="col-md-6">
+                  <div class="col-md-7">
                     <label>Observações</label>
                     <textarea class="form-control form-control-user uf" name="cliente_obs" placeholder="Observações"><?php echo $cliente->cliente_obs; ?></textarea>
                     <?php echo form_error('cliente_obs', '<small class="form-text text-danger">','</small>'); ?>
@@ -123,7 +124,12 @@
                   
                 </div>  
 
+                <input type="hidden" name="cliente_id" value="<?php echo $cliente->cliente_id; ?>"/>
+
                 <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
+
+                <a title="Voltar" href="<?php echo base_url('clientes'); ?>" class="btn btn-success btn-sm ml-2">Voltar</a>
+              
               </form>
             </div>
           </div>
