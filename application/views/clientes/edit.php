@@ -136,23 +136,17 @@
                     </div>
                   </div>  
                 </fieldset>  
-
                 
-
+                <input type="hidden" name="cliente_tipo" value="<?php echo $cliente->cliente_tipo; ?>"/>
                 <input type="hidden" name="cliente_id" value="<?php echo $cliente->cliente_id; ?>"/>
-
                 <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
-
                 <a title="Voltar" href="<?php echo base_url('clientes'); ?>" class="btn btn-success btn-sm ml-2">Voltar</a>
               
               </form>
             </div>
           </div>
-
         </div>
-        <!-- /.container-fluid -->
-
       </div>
-      <!-- End of Main Content -->
+
 
     
