@@ -71,7 +71,7 @@
 
                   <div class="col-md-4">
                     <label>Data Nascimento</label>
-                    <input type="date" class="form-control form-control-user cep" name="cliente_data_nascimento" value="<?php echo $cliente->cliente_data_nascimento; ?>">
+                    <input type="date" class="form-control form-control-user cep" name="cliente_data_nascimento" value="<?php echo $cliente->cliente_obs; ?>">
                     <?php echo form_error('cliente_data_nascimento', '<small class="form-text text-danger">','</small>'); ?>
                   </div>
 
@@ -109,16 +109,16 @@
                     <?php echo form_error('cliente_cidade', '<small class="form-text text-danger">','</small>'); ?>
                   </div>
 
-                  <div class="col-md-4">
+                  <div class="col-md-2">
                     <label>UF</label>
                     <input type="text" class="form-control form-control-user uf" name="cliente_estado" placeholder="Estado" value="<?php echo $cliente->cliente_estado; ?>">
                     <?php echo form_error('cliente_estado', '<small class="form-text text-danger">','</small>'); ?>
                   </div>
 
-                  <div class="col-md-4">
-                    <label>UF</label>
-                    <input type="text" class="form-control form-control-user uf" name="cliente_estado" placeholder="Estado" value="<?php echo $cliente->cliente_estado; ?>">
-                    <?php echo form_error('cliente_estado', '<small class="form-text text-danger">','</small>'); ?>
+                  <div class="col-md-6">
+                    <label>Observações</label>
+                    <textarea class="form-control form-control-user uf" name="cliente_obs" placeholder="Observações"><?php echo $cliente->cliente_obs; ?></textarea>
+                    <?php echo form_error('cliente_obs', '<small class="form-text text-danger">','</small>'); ?>
                   </div>
                   
                 </div>  
