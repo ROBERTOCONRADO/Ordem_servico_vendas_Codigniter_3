@@ -36,26 +36,7 @@ class Clientes extends CI_Controller {
             $this->session->set_flashdata('error', 'Cliente não encontrado!');
             redirect('clientes');
     } else {
-        /*
-            [cliente_tipo] => 2
-            [cliente_nome] => Marcia
-            [cliente_sobrenome] => Souza
-            [cliente_data_nascimento] => 2002-08-14
-            [cliente_cpf_cnpj] => 50.389.234/001-40
-            [cliente_rg_ie] => 
-            [cliente_email] => 
-            [cliente_telefone] => 
-            [cliente_celular] => 
-            [cliente_cep] => 
-            [cliente_endereco] => 
-            [cliente_numero_endereco] => 
-            [cliente_bairro] => 
-            [cliente_complemento] => 
-            [cliente_cidade] => 
-            [cliente_estado] => 
-            [cliente_ativo] => 0
-            [cliente_obs] =>
-        */
+       
         $this->form_validation->set_rules('cliente_nome', '', 'trim|required|min_length[4]|max_length[45]');
         $this->form_validation->set_rules('cliente_sobrenome', '', 'trim|required|min_length[4]|max_length[150]');
         $this->form_validation->set_rules('cliente_data_nascimento', '', 'required');
@@ -66,8 +47,6 @@ class Clientes extends CI_Controller {
         }else {
              $this->form_validation->set_rules('cliente_cnpj', '', 'trim|required|exact_length[18]|callback_valida_cnpj');
         }
-
-
 
         $this->form_validation->set_rules('cliente_rg_ie', '', 'trim|required|max_length[20]|callback_check_rg_ie');
 
@@ -80,16 +59,15 @@ class Clientes extends CI_Controller {
         if(!empty($this->input->post('cliente_telefone'))){
             $this->form_validation->set_rules('cliente_celular', '', 'trim|required|max_length[15]|callback_check_celular');
         }
-
          
-        // $this->form_validation->set_rules('cliente_cep', '', 'trim|required|exact_length[9]');
-        // $this->form_validation->set_rules('cliente_endereco', '', 'trim|required|max_length[155]');
-        // $this->form_validation->set_rules('cliente_numero_endereco', '', 'trim|max_length[20]');
-        // $this->form_validation->set_rules('cliente_bairro', '', 'trim|required|max_length[45]');
-        // $this->form_validation->set_rules('cliente_complemento', '', 'trim|max_length[145]');
-        // $this->form_validation->set_rules('cliente_cidade', '', 'trim|required|max_length[50]');
-        // $this->form_validation->set_rules('cliente_estado', '', 'trim|required|exact_length[2]');
-        // $this->form_validation->set_rules('cliente_obs', '', 'max_length[500]');
+        $this->form_validation->set_rules('cliente_cep', '', 'trim|required|exact_length[9]');
+        $this->form_validation->set_rules('cliente_endereco', '', 'trim|required|max_length[155]');
+        $this->form_validation->set_rules('cliente_numero_endereco', '', 'trim|max_length[20]');
+        $this->form_validation->set_rules('cliente_bairro', '', 'trim|required|max_length[45]');
+        $this->form_validation->set_rules('cliente_complemento', '', 'trim|max_length[145]');
+        $this->form_validation->set_rules('cliente_cidade', '', 'trim|required|max_length[50]');
+        $this->form_validation->set_rules('cliente_estado', '', 'trim|required|exact_length[2]');
+        $this->form_validation->set_rules('cliente_obs', '', 'max_length[500]');
 
         if($this->form_validation->run()){
            exit('validado');
