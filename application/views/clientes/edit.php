@@ -20,7 +20,7 @@
             
             <div class="card-body">
               <form class="user" method="POST" name="form_edit">
-                <p><strong><i class="fas fa-clock"></i>&nbsp;Última Alteração:&nbsp;</strong><?php echo $cliente->cliente_data_alteracao; ?></p>
+                <p><strong><i class="fas fa-clock"></i>&nbsp;Última Alteração:&nbsp;</strong><?php echo formata_data_banco_com_hora($cliente->cliente_data_alteracao); ?></p>
                 <fieldset class="mt-4 border p-2">
                   <legend class="font-small"><i class="fas fa-user-tie"></i>&nbsp;Dados Pessoais</legend>
                   <div class="form-group row">
@@ -43,13 +43,21 @@
 
                   <div class="form-group row">                 
                   <div class="col-md-2">
-                      <label>CPF ou CNPJ</label>
-                      <input type="text" class="form-control form-control-user cnpj" name="cliente_cpf_cnpj" placeholder="CPF ou CNPJ" value="<?php echo $cliente->cliente_cpf_cnpj; ?>">
+                      <?php if($cliente->cliente_tipo == 1): ?>
+                      <label>CPF</label>
+                      <?php else: ?>
+                        <label>CNPJ</label>
+                      <?php endif; ?>
+                      <input type="text" class="form-control form-control-user cnpj" name="cliente_cpf_cnpj" placeholder="<?php echo ($cliente->cliente_tipo == 1 ? 'CPF do Cliente' : 'CNPJ do cliente') ?>" value="<?php echo $cliente->cliente_cpf_cnpj; ?>">
                       <?php echo form_error('cliente_cpf_cnpj', '<small class="form-text text-danger">','</small>'); ?>
                     </div>
                     <div class="col-md-2">
-                      <label>RG ou I.E</label>
-                      <input type="text" class="form-control form-control-user" name="cliente_rg_ie" placeholder="RG ou I.E" value="<?php echo $cliente->cliente_rg_ie; ?>">
+                    <?php if($cliente->cliente_tipo == 1): ?>
+                      <label>RG</label>
+                      <?php else: ?>
+                        <label>I.E</label>
+                      <?php endif; ?>
+                      <input type="text" class="form-control form-control-user" name="cliente_rg_ie" placeholder="<?php echo ($cliente->cliente_tipo == 1 ? 'RG do Cliente' : 'Inscrição estadual') ?>" value="<?php echo $cliente->cliente_rg_ie; ?>">
                       <?php echo form_error('cliente_rg_ie', '<small class="form-text text-danger">','</small>'); ?>
                     </div>
                     <div class="col-md-4">
