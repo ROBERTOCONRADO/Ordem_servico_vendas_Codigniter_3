@@ -88,7 +88,7 @@ class Clientes extends CI_Controller {
     
                 'cliente' => $this->core_model->get_by_id('clientes', array('cliente_id' => $cliente_id)),
             );
-             echo '<pre>';print_r($data['cliente']);exit();
+            //  echo '<pre>';print_r($data['cliente']);exit();
             
             $this->load->view('layout/header', $data);
             $this->load->view('clientes/edit');
