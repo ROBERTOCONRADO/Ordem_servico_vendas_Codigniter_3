@@ -70,8 +70,16 @@ class Clientes extends CI_Controller {
         $this->form_validation->set_rules('cliente_rg_ie', '', 'trim|required|max_length[20]|callback_check_rg_ie');
 
         $this->form_validation->set_rules('cliente_email', '', 'trim|required|valid_email|max_length[50]|callback_check_email');
-        // $this->form_validation->set_rules('cliente_telefone', '', 'trim|max_length[14]');
-        // $this->form_validation->set_rules('cliente_celular', '', 'trim|required|max_length[15]');
+
+
+        if(!empty($this->input->post('cliente_telefone'))){
+            $this->form_validation->set_rules('cliente_telefone', '', 'trim|max_length[14]|callback_check_telefone');
+        }  
+        if(!empty($this->input->post('cliente_telefone'))){
+            $this->form_validation->set_rules('cliente_celular', '', 'trim|required|max_length[15]|callback_check_celular');
+        }
+
+         
         // $this->form_validation->set_rules('cliente_cep', '', 'trim|required|exact_length[9]');
         // $this->form_validation->set_rules('cliente_endereco', '', 'trim|required|max_length[155]');
         // $this->form_validation->set_rules('cliente_numero_endereco', '', 'trim|max_length[20]');
@@ -117,6 +125,24 @@ class Clientes extends CI_Controller {
         $cliente_id = $this->input->post('cliente_id');
         if($this->core_model->get_by_id('clientes', array('cliente_email' => $cliente_email, 'cliente_id !=' => $cliente_id))) {
             $this->form_validation->set_message('check_email', 'Esse e-mail já existe!');
+            return FALSE;
+        }else {
+            return TRUE;
+        }
+    }
+    public function check_telefone($cliente_telefone) {
+        $cliente_id = $this->input->post('cliente_id');
+        if($this->core_model->get_by_id('clientes', array('cliente_telefone' => $cliente_telefone, 'cliente_id !=' => $cliente_id))) {
+            $this->form_validation->set_message('check_telefone', 'Esse telefone já existe!');
+            return FALSE;
+        }else {
+            return TRUE;
+        }
+    }
+    public function check_celular($cliente_celular) {
+        $cliente_id = $this->input->post('cliente_id');
+        if($this->core_model->get_by_id('clientes', array('cliente_celular' => $cliente_celular, 'cliente_id !=' => $cliente_id))) {
+            $this->form_validation->set_message('check_celular', 'Número celular já existente!');
             return FALSE;
         }else {
             return TRUE;
