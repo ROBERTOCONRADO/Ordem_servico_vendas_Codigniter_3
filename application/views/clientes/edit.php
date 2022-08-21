@@ -20,10 +20,10 @@
             
             <div class="card-body">
               <form class="user" method="POST" name="form_edit">
+                <p><strong><i class="fas fa-clock"></i>&nbsp;Última Alteração:&nbsp;</strong><?php echo $cliente->cliente_data_alteracao; ?></p>
                 <fieldset class="mt-4 border p-2">
                   <legend class="font-small"><i class="fas fa-user-tie"></i>&nbsp;Dados Pessoais</legend>
                   <div class="form-group row">
-                  
                     <div class="col-md-4">
                       <label>Nome</label>
                       <input type="text" class="form-control form-control-user" name="cliente_nome" placeholder="Primeiro nome" value="<?php echo $cliente->cliente_nome; ?>">
@@ -36,13 +36,12 @@
                     </div>
                     <div class="col-md-4">
                       <label>Data Nascimento</label>
-                      <input type="date" class="form-control form-control-user cep" name="cliente_data_nascimento" value="<?php echo $cliente->cliente_obs; ?>">
+                      <input type="date" class="form-control form-control-user-date" name="cliente_data_nascimento" value="<?php echo $cliente->cliente_obs; ?>">
                       <?php echo form_error('cliente_data_nascimento', '<small class="form-text text-danger">','</small>'); ?>
-                    </div>
-                    
+                    </div>                    
                   </div>
-                  <div class="form-group row">
-                  
+
+                  <div class="form-group row">                 
                   <div class="col-md-2">
                       <label>CPF ou CNPJ</label>
                       <input type="text" class="form-control form-control-user cnpj" name="cliente_cpf_cnpj" placeholder="CPF ou CNPJ" value="<?php echo $cliente->cliente_cpf_cnpj; ?>">
@@ -67,19 +66,16 @@
                       <label>Telefone Celular</label>
                       <input type="text" class="form-control form-control-user sp_celphones" name="cliente_celular" placeholder="Telefone Celular" value="<?php echo $cliente->cliente_celular; ?>">
                       <?php echo form_error('cliente_celular', '<small class="form-text text-danger">','</small>'); ?>
-                    </div>
-                    
+                    </div>                   
                   </div>
                 </fieldset>  
 
                 <fieldset class="mt-4 border p-2">
                   <legend class="font-small"><i class="fas fa-map-marker-alt"></i>&nbsp;Dados de Endereço</legend>
-
                   <div class="form-group row">
-
                   <div class="col-md-4">
                       <label>Cidade</label>
-                      <input type="text" class="form-control form-control-user cep" name="cliente_cidade" placeholder="Cidade" value="<?php echo $cliente->cliente_cidade; ?>">
+                      <input type="text" class="form-control form-control-user" name="cliente_cidade" placeholder="Cidade" value="<?php echo $cliente->cliente_cidade; ?>">
                       <?php echo form_error('cliente_cidade', '<small class="form-text text-danger">','</small>'); ?>
                     </div>
                     <div class="col-md-2">
@@ -98,6 +94,7 @@
                       <?php echo form_error('cliente_bairro', '<small class="form-text text-danger">','</small>'); ?>
                     </div>
                   </div>  
+
                   <div class="form-group row">  
                     <div class="col-md-4">
                       <label>Endereço</label>
@@ -115,7 +112,6 @@
                       <?php echo form_error('cliente_complemento', '<small class="form-text text-danger">','</small>'); ?>
                     </div>
                   </div>  
-
                 </fieldset>
 
                 <fieldset class="mt-4 border p-2 mb-3">
@@ -123,12 +119,12 @@
                   <div class="form-group row">
                     <div class="col-md-8">
                       <label>Observações</label>
-                      <textarea class="form-control form-control-user uf" name="cliente_obs" placeholder="Observações"><?php echo $cliente->cliente_obs; ?></textarea>
+                      <textarea class="form-control form-control-user" name="cliente_obs" placeholder="Observações"><?php echo $cliente->cliente_obs; ?></textarea>
                       <?php echo form_error('cliente_obs', '<small class="form-text text-danger">','</small>'); ?>
                     </div>
                     <div class="col-md-4">
                       <label>Cliente Ativo</label>
-                      <select class="form-control" name="cliente_ativo" placeholder=""><?php echo $cliente->cliente_ativo; ?>
+                      <select class="custom-select" name="cliente_ativo" placeholder=""><?php echo $cliente->cliente_ativo; ?>
                         <option value="0" <?php echo ($cliente->cliente_ativo == 0 ? 'selected' : ''); ?> >Não</option>
                         <option value="1" <?php echo ($cliente->cliente_ativo == 1 ? 'selected' : ''); ?> >Sim</option>
                       </select>
