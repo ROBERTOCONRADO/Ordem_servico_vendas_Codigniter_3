@@ -93,6 +93,28 @@ class Clientes extends CI_Controller {
             [cliente_id] => 1
             */
 
+            $data = elements(
+                array(
+                    'cliente_nome',
+                    'cliente_sobrenome',
+                    'cliente_data_nascimento',
+                    'cliente_rg_ie',
+                    'cliente_email',
+                    'cliente_telefone', 
+                    'cliente_celular',
+                    'cliente_endereco',
+                    'cliente_numero_endereco',
+                    'cliente_complemento',
+                    'cliente_bairro',
+                    'cliente_cep',
+                    'cliente_cidade',
+                    'cliente_estado',
+                    'cliente_ativo',
+                    'cliente_obs',
+                    'cliente_tipo',
+                ), $this->input->post()
+            );
+
         //    echo '<pre>';print_r($this->input->post());exit();
         }else {
             //Erro de validação
