@@ -114,6 +114,11 @@ class Clientes extends CI_Controller {
                     'cliente_tipo',
                 ), $this->input->post()
             );
+            if($cliente_tipo == 1) {
+                $data('cliente_cpf_cnpj') = $this->input->post('cliente_cpf');
+            } else {
+                $data('cliente_cpf_cnpj') = $this->input->post('cliente_cnpj');
+            }
 
         //    echo '<pre>';print_r($this->input->post());exit();
         }else {
