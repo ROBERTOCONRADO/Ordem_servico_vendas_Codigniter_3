@@ -115,12 +115,19 @@ class Clientes extends CI_Controller {
                 ), $this->input->post()
             );
             if($cliente_tipo == 1) {
-                $data('cliente_cpf_cnpj') = $this->input->post('cliente_cpf');
+                $data['cliente_cpf_cnpj'] = $this->input->post('cliente_cpf');
             } else {
-                $data('cliente_cpf_cnpj') = $this->input->post('cliente_cnpj');
+                $data['cliente_cpf_cnpj'] = $this->input->post('cliente_cnpj');
             }
+            $data['cliente_estado'] = strtoupper($this->input->post('cliente_estado'));
 
-        //    echo '<pre>';print_r($this->input->post());exit();
+            $data = html_escape($data);
+
+            $this->core_model->update('clientes', $data, array('cliente_id' => $cliente_id));
+
+            redirect('clientes');
+
+            // echo '<pre>';print_r($data);exit();
         }else {
             //Erro de validação
             $data = array(
