@@ -31,21 +31,16 @@ class Clientes extends CI_Controller {
         $this->load->view('layout/footer');
     }
 
-    public function edit($cliente_id = NULL) {
-        if(!$cliente_id && !$this->core_model->get_by_id('clientes', array('cliente_id' => $cliente_id))) {
-            $this->session->set_flashdata('error', 'Cliente não encontrado!');
-            redirect('clientes');
-    } else {
-       
+    public function add() {
         $this->form_validation->set_rules('cliente_nome', '', 'trim|required|min_length[4]|max_length[45]');
         $this->form_validation->set_rules('cliente_sobrenome', '', 'trim|required|min_length[4]|max_length[150]');
         $this->form_validation->set_rules('cliente_data_nascimento', '', 'required');
 
         $cliente_tipo = $this->input->post('cliente_tipo');
         if ($cliente_tipo == 1) {
-             $this->form_validation->set_rules('cliente_cpf', '', 'trim|required|exact_length[14]|callback_valida_cpf');
+             $this->form_validation->set_rules('cliente_cpf', '', 'trim|required|exact_length[14]|is_unique[clientes.cliente_cpf_cnpj]|callback_valida_cpf');
         }else {
-             $this->form_validation->set_rules('cliente_cnpj', '', 'trim|required|exact_length[18]|callback_valida_cnpj');
+             $this->form_validation->set_rules('cliente_cnpj', '', 'trim|required|exact_length[18]|is_unique[clientes.cliente_cpf_cnpj]|callback_valida_cnpj');
         }
 
         $this->form_validation->set_rules('cliente_rg_ie', '', 'trim|required|max_length[20]|callback_check_rg_ie');
@@ -70,28 +65,6 @@ class Clientes extends CI_Controller {
         $this->form_validation->set_rules('cliente_obs', '', 'max_length[500]');
 
         if($this->form_validation->run()){
-
-            /*
-            [cliente_nome] => Marcia
-            [cliente_sobrenome] => Souza
-            [cliente_data_nascimento] => 2022-08-10
-            [cliente_cpf] => 007.129.310-82
-            [cliente_rg_ie] => 50.678.741-2
-            [cliente_email] => betto332232@gmail.com
-            [cliente_telefone] => (54) 5455-4545
-            [cliente_celular] => (52) 55555-5555
-            [cliente_cidade] => condeuba
-            [cliente_estado] => BA
-            [cliente_cep] => 46200-000
-            [cliente_bairro] => centro
-            [cliente_endereco] => praca x dos testes
-            [cliente_numero_endereco] => 180
-            [cliente_complemento] => testando o banco
-            [cliente_obs] => x testando 123
-            [cliente_ativo] => 0
-            [cliente_tipo] => 1
-            [cliente_id] => 1
-            */
 
             $data = elements(
                 array(
@@ -146,7 +119,6 @@ class Clientes extends CI_Controller {
             $this->load->view('layout/header', $data);
             $this->load->view('clientes/edit');
             $this->load->view('layout/footer');
-        }
     }
 
     public function edit($cliente_id = NULL) {
