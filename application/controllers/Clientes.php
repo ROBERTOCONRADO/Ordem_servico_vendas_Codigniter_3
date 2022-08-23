@@ -43,9 +43,9 @@ class Clientes extends CI_Controller {
              $this->form_validation->set_rules('cliente_cnpj', '', 'trim|required|exact_length[18]|is_unique[clientes.cliente_cpf_cnpj]|callback_valida_cnpj');
         }
 
-        $this->form_validation->set_rules('cliente_rg_ie', '', 'trim|required|max_length[20]|callback_check_rg_ie');
+        $this->form_validation->set_rules('cliente_rg_ie', '', 'trim|required|max_length[20]|is_unique[clientes.cliente_rg_ie]');
 
-        $this->form_validation->set_rules('cliente_email', '', 'trim|required|valid_email|max_length[50]|callback_check_email');
+        $this->form_validation->set_rules('cliente_email', '', 'trim|required|valid_email|max_length[50]|is_unique[clientes.cliente_email]');
 
 
         if(!empty($this->input->post('cliente_telefone'))){
