@@ -49,10 +49,10 @@ class Clientes extends CI_Controller {
 
 
         if(!empty($this->input->post('cliente_telefone'))){
-            $this->form_validation->set_rules('cliente_telefone', '', 'trim|max_length[14]|callback_check_telefone');
+            $this->form_validation->set_rules('cliente_telefone', '', 'trim|max_length[14]|is_unique[clientes.cliente_telefone]');
         }  
         if(!empty($this->input->post('cliente_telefone'))){
-            $this->form_validation->set_rules('cliente_celular', '', 'trim|required|max_length[15]|callback_check_celular');
+            $this->form_validation->set_rules('cliente_celular', '', 'trim|required|max_length[15]|is_unique[clientes.cliente_celular]');
         }
          
         $this->form_validation->set_rules('cliente_cep', '', 'trim|required|exact_length[9]');
@@ -96,7 +96,7 @@ class Clientes extends CI_Controller {
 
             $data = html_escape($data);
 
-            $this->core_model->update('clientes', $data, array('cliente_id' => $cliente_id));
+            $this->core_model->insert('clientes', $data);
 
             redirect('clientes');
 
@@ -105,19 +105,19 @@ class Clientes extends CI_Controller {
             //Erro de validação
             $data = array(
 
-                'titulo' => 'Atualizar cliente',
+                'titulo' => 'Cadastrar cliente',
 
                 'scripts' => array(
                     'vendor/mask/jquery.mask.min.js',
                     'vendor/mask/app.js',
+                    'js/clientes.js',
                 ),
     
-                'cliente' => $this->core_model->get_by_id('clientes', array('cliente_id' => $cliente_id)),
             );
             //  echo '<pre>';print_r($data['cliente']);exit();
             
             $this->load->view('layout/header', $data);
-            $this->load->view('clientes/edit');
+            $this->load->view('clientes/add');
             $this->load->view('layout/footer');
     }
 
