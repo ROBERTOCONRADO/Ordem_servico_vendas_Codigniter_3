@@ -35,16 +35,10 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Escolha uma opção</h6>
-            <a class="collapse-item" href="<?php echo base_url('clientes'); ?>">Buttons</a>
-            <a class="collapse-item" href="cards.html">Cards</a>
+            <a title="Gerenciar clientes" class="collapse-item" href="<?php echo base_url('clientes'); ?>">Clientes</a>
+            <a title="Gerenciar fornecedores" class="collapse-item" href="<?php echo base_url('fornecedores'); ?>">Fornecedores</a>
           </div>
         </div>
-      </li>
-
-      <li class="nav-item">
-        <a title="Gerenciar clientes" class="nav-link" href="<?php echo base_url('clientes'); ?>">
-        &nbsp;<i class="fas fa-user-tie"></i>
-          <span>Clientes</span></a>
       </li>
 
       <!-- Divider -->
