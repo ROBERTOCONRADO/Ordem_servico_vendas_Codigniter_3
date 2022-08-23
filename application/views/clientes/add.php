@@ -19,7 +19,17 @@
           <div class="card shadow mb-4">
             
             <div class="card-body">
-              <form class="user" method="POST" name="form_edit">
+              <form class="user" method="POST" name="form_add">
+
+              <div class="custom-control custom-radio custom-control-inline mt-2">
+                <input type="radio" id="pessoa_fisica" name="cliente_tipo" class="custom-control-input" value="1" <?php echo set_checkbox('cliente_tipo', '1') ?> checked="">
+                <label class="custom-control-label pt-1" for="pessoa_fisica">Pessoa física</label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="pessoa_juridica" name="cliente_tipo" class="custom-control-input" value="2" <?php echo set_checkbox('cliente_tipo', '2') ?> >
+                <label class="custom-control-label pt-1" for="pessoa_juridica">Pessoa jurídica</label>
+              </div>
+
                 <fieldset class="mt-4 border p-2">
                   <legend class="font-small"><i class="fas fa-user-tie"></i>&nbsp;Dados Pessoais</legend>
                   <div class="form-group row">
@@ -59,7 +69,7 @@
                     
                       <label class="pessoa_fisica">RG</label>
                       <label class="pessoa_juridica">I.E</label>
-                      <input type="text" class="form-control form-control-user" name="cliente_rg_ie" placeholder="<?php echo ($cliente->cliente_tipo == 1 ? 'RG do Cliente' : 'Inscrição estadual') ?>" value="<?php echo $cliente->cliente_rg_ie; ?>">
+                      <input type="text" class="form-control form-control-user" name="cliente_rg_ie" value="<?php echo set_value('cliente_rg_ie'); ?>">
                       <?php echo form_error('cliente_rg_ie', '<small class="form-text text-danger">','</small>'); ?>
                     </div>
                     <div class="col-md-4">
@@ -129,22 +139,20 @@
                   <div class="form-group row">
                     <div class="col-md-8">
                       <label>Observações</label>
-                      <textarea class="form-control form-control-user" name="cliente_obs" placeholder="Observações"><?php echo $cliente->cliente_obs; ?></textarea>
+                      <textarea class="form-control form-control-user" name="cliente_obs" placeholder="Observações"></textarea>
                       <?php echo form_error('cliente_obs', '<small class="form-text text-danger">','</small>'); ?>
                     </div>
                     <div class="col-md-4">
                       <label>Cliente Ativo</label>
                       <select class="custom-select" name="cliente_ativo" placeholder=""><?php echo $cliente->cliente_ativo; ?>
-                        <option value="0" <?php echo ($cliente->cliente_ativo == 0 ? 'selected' : ''); ?> >Não</option>
-                        <option value="1" <?php echo ($cliente->cliente_ativo == 1 ? 'selected' : ''); ?> >Sim</option>
+                        <option value="0">Não</option>
+                        <option value="1">Sim</option>
                       </select>
                       <?php echo form_error('cliente_ativo', '<small class="form-text text-danger">','</small>'); ?>
                     </div>
                   </div>  
                 </fieldset>  
                 
-                <input type="hidden" name="cliente_tipo" value="<?php echo $cliente->cliente_tipo; ?>"/>
-                <input type="hidden" name="cliente_id" value="<?php echo $cliente->cliente_id; ?>"/>
                 <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
                 <a title="Voltar" href="<?php echo base_url('clientes'); ?>" class="btn btn-success btn-sm ml-2">Voltar</a>
               

@@ -32,6 +32,7 @@ class Clientes extends CI_Controller {
     }
 
     public function add() {
+
         $this->form_validation->set_rules('cliente_nome', '', 'trim|required|min_length[4]|max_length[45]');
         $this->form_validation->set_rules('cliente_sobrenome', '', 'trim|required|min_length[4]|max_length[150]');
         $this->form_validation->set_rules('cliente_data_nascimento', '', 'required');
@@ -119,8 +120,8 @@ class Clientes extends CI_Controller {
             $this->load->view('layout/header', $data);
             $this->load->view('clientes/add');
             $this->load->view('layout/footer');
-    }
-
+        }
+    }    
     public function edit($cliente_id = NULL) {
         if(!$cliente_id && !$this->core_model->get_by_id('clientes', array('cliente_id' => $cliente_id))) {
             $this->session->set_flashdata('error', 'Cliente não encontrado!');
