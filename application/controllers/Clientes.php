@@ -148,6 +148,124 @@ class Clientes extends CI_Controller {
             $this->load->view('layout/footer');
         }
     }
+
+    public function edit($cliente_id = NULL) {
+        if(!$cliente_id && !$this->core_model->get_by_id('clientes', array('cliente_id' => $cliente_id))) {
+            $this->session->set_flashdata('error', 'Cliente não encontrado!');
+            redirect('clientes');
+    } else {
+       
+        $this->form_validation->set_rules('cliente_nome', '', 'trim|required|min_length[4]|max_length[45]');
+        $this->form_validation->set_rules('cliente_sobrenome', '', 'trim|required|min_length[4]|max_length[150]');
+        $this->form_validation->set_rules('cliente_data_nascimento', '', 'required');
+
+        $cliente_tipo = $this->input->post('cliente_tipo');
+        if ($cliente_tipo == 1) {
+             $this->form_validation->set_rules('cliente_cpf', '', 'trim|required|exact_length[14]|callback_valida_cpf');
+        }else {
+             $this->form_validation->set_rules('cliente_cnpj', '', 'trim|required|exact_length[18]|callback_valida_cnpj');
+        }
+
+        $this->form_validation->set_rules('cliente_rg_ie', '', 'trim|required|max_length[20]|callback_check_rg_ie');
+
+        $this->form_validation->set_rules('cliente_email', '', 'trim|required|valid_email|max_length[50]|callback_check_email');
+
+
+        if(!empty($this->input->post('cliente_telefone'))){
+            $this->form_validation->set_rules('cliente_telefone', '', 'trim|max_length[14]|callback_check_telefone');
+        }  
+        if(!empty($this->input->post('cliente_telefone'))){
+            $this->form_validation->set_rules('cliente_celular', '', 'trim|required|max_length[15]|callback_check_celular');
+        }
+         
+        $this->form_validation->set_rules('cliente_cep', '', 'trim|required|exact_length[9]');
+        $this->form_validation->set_rules('cliente_endereco', '', 'trim|required|max_length[155]');
+        $this->form_validation->set_rules('cliente_numero_endereco', '', 'trim|max_length[20]');
+        $this->form_validation->set_rules('cliente_bairro', '', 'trim|required|max_length[45]');
+        $this->form_validation->set_rules('cliente_complemento', '', 'trim|max_length[145]');
+        $this->form_validation->set_rules('cliente_cidade', '', 'trim|required|max_length[50]');
+        $this->form_validation->set_rules('cliente_estado', '', 'trim|required|exact_length[2]');
+        $this->form_validation->set_rules('cliente_obs', '', 'max_length[500]');
+
+        if($this->form_validation->run()){
+
+            /*
+            [cliente_nome] => Marcia
+            [cliente_sobrenome] => Souza
+            [cliente_data_nascimento] => 2022-08-10
+            [cliente_cpf] => 007.129.310-82
+            [cliente_rg_ie] => 50.678.741-2
+            [cliente_email] => betto332232@gmail.com
+            [cliente_telefone] => (54) 5455-4545
+            [cliente_celular] => (52) 55555-5555
+            [cliente_cidade] => condeuba
+            [cliente_estado] => BA
+            [cliente_cep] => 46200-000
+            [cliente_bairro] => centro
+            [cliente_endereco] => praca x dos testes
+            [cliente_numero_endereco] => 180
+            [cliente_complemento] => testando o banco
+            [cliente_obs] => x testando 123
+            [cliente_ativo] => 0
+            [cliente_tipo] => 1
+            [cliente_id] => 1
+            */
+
+            $data = elements(
+                array(
+                    'cliente_nome',
+                    'cliente_sobrenome',
+                    'cliente_data_nascimento',
+                    'cliente_rg_ie',
+                    'cliente_email',
+                    'cliente_telefone', 
+                    'cliente_celular',
+                    'cliente_endereco',
+                    'cliente_numero_endereco',
+                    'cliente_complemento',
+                    'cliente_bairro',
+                    'cliente_cep',
+                    'cliente_cidade',
+                    'cliente_estado',
+                    'cliente_ativo',
+                    'cliente_obs',
+                    'cliente_tipo',
+                ), $this->input->post()
+            );
+            if($cliente_tipo == 1) {
+                $data['cliente_cpf_cnpj'] = $this->input->post('cliente_cpf');
+            } else {
+                $data['cliente_cpf_cnpj'] = $this->input->post('cliente_cnpj');
+            }
+            $data['cliente_estado'] = strtoupper($this->input->post('cliente_estado'));
+
+            $data = html_escape($data);
+
+            $this->core_model->update('clientes', $data, array('cliente_id' => $cliente_id));
+
+            redirect('clientes');
+
+            // echo '<pre>';print_r($data);exit();
+        }else {
+            //Erro de validação
+            $data = array(
+
+                'titulo' => 'Atualizar cliente',
+
+                'scripts' => array(
+                    'vendor/mask/jquery.mask.min.js',
+                    'vendor/mask/app.js',
+                ),
+    
+                'cliente' => $this->core_model->get_by_id('clientes', array('cliente_id' => $cliente_id)),
+            );
+            //  echo '<pre>';print_r($data['cliente']);exit();
+            
+            $this->load->view('layout/header', $data);
+            $this->load->view('clientes/edit');
+            $this->load->view('layout/footer');
+        }
+    }
     }
     public function check_rg_ie($cliente_rg_ie) {
         $cliente_id = $this->input->post('cliente_id');
