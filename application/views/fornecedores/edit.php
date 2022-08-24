@@ -25,9 +25,9 @@
                   <legend class="font-small"><i class="fas fa-user-tie"></i>&nbsp;Dados Pessoais</legend>
                   <div class="form-group row">
                     <div class="col-md-4">
-                      <label>Nome</label>
-                      <input type="text" class="form-control form-control-user" name="fornecedor_nome" placeholder="Primeiro nome" value="<?php echo $fornecedor->fornecedor_nome; ?>">
-                      <?php echo form_error('fornecedor_nome', '<small class="form-text text-danger">','</small>'); ?>
+                      <label>Razão Social</label>
+                      <input type="text" class="form-control form-control-user" name="fornecedor_razao" placeholder="Razão Social" value="<?php echo $fornecedor->fornecedor_razao; ?>">
+                      <?php echo form_error('fornecedor_razao', '<small class="form-text text-danger">','</small>'); ?>
                     </div>
                     <div class="col-md-4">
                       <label>Sobrenome</label>
