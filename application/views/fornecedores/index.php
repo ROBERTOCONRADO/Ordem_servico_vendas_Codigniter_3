@@ -48,7 +48,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <a title="Cadastrar novo Cliente" href="<?php echo base_url('clientes/add'); ?>" class="btn btn-success btn-sm float-right"><i class="fas fa-user-tie"></i>&nbsp;Novo</a>
+              <a title="Cadastrar novo fornecedor" href="<?php echo base_url('clientes/add'); ?>" class="btn btn-success btn-sm float-right"><i class="fas fa-user-tag"></i>&nbsp;Novo</a>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -56,9 +56,10 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Nome</th>
-                      <th>CPF / CNPJ</th>
-                      <th>Tipo cliente</th>
+                      <th>Nome Fantasia</th>
+                      <th>CNPJ</th>
+                      <th>Telefone Fixo</th>
+                      <th>E-mail</th>
                       <th class="text-center">Ativo</th>
                       <th class="text-right no-sort pr-3">Ações</th>
                     </tr>
