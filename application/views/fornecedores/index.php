@@ -48,7 +48,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <a title="Cadastrar novo fornecedor" href="<?php echo base_url('clientes/add'); ?>" class="btn btn-success btn-sm float-right"><i class="fas fa-user-tag"></i>&nbsp;Novo</a>
+              <a title="Cadastrar novo fornecedor" href="<?php echo base_url('fornecedores/add'); ?>" class="btn btn-success btn-sm float-right"><i class="fas fa-user-tag"></i>&nbsp;Novo</a>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -67,13 +67,15 @@
                   <tbody>
                     <?php foreach ($fornecedores as $fornecedor): ?>
                     <tr>
-                      <td><?php echo $fornecedor->cliente_id ?></td>
-                      <td><?php echo $fornecedor->cliente_nome ?></td>
-                      <td><?php echo $fornecedor->cliente_cpf_cnpj ?></td>
-                      <td><?php echo ($fornecedor->cliente_tipo == 1 ? 'Pessoa física' : 'Pessoa jurídica') ?></td>
-                      <td class="text-center pr-4"><?php echo ($fornecedor->cliente_ativo == 1 ? '<span class="badge badge-info btn-sm">Sim</span>' : '<span class="badge badge-warning btn-sm">Não</span>') ?></td>
+                      <td><?php echo $fornecedor->fornecedor_id ?></td>
+                      <td><?php echo $fornecedor->fornecedor_nome_fantasia ?></td>
+                      <td><?php echo $fornecedor->fornecedor_cnpj ?></td>
+                      <td><?php echo $fornecedor->fornecedor_telefone ?></td>
+                      <td><?php echo $fornecedor->fornecedor_email ?></td>
+                      
+                      <td class="text-center pr-4"><?php echo ($fornecedor->fornecedor_ativo == 1 ? '<span class="badge badge-info btn-sm">Sim</span>' : '<span class="badge badge-warning btn-sm">Não</span>') ?></td>
                       <td class="text-right">
-                        <a title="Editar" href="<?php echo base_url('clientes/edit/'.$fornecedor->cliente_id); ?>" class="btn btn-sm btn-primary"><i class="fas fa-user-edit"></i></a>
+                        <a title="Editar" href="<?php echo base_url('fornecedores/edit/'.$fornecedor->fornecedor_id); ?>" class="btn btn-sm btn-primary"><i class="fas fa-user-edit"></i></a>
                         <a title="excluir" href="javascript(void)" data-toggle="modal" data-target="#cliente-<?php echo $fornecedor->cliente_id; ?>" class="btn btn-sm btn-danger"><i class="fas fa-user-times"></i></a>
                       </td>
                     </tr>
@@ -90,7 +92,7 @@
                             <div class="modal-body">Selecione  <b>Confirmar</b>  se deseja mesmo excluir.</div>
                             <div class="modal-footer">
                               <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                              <a class="btn btn-danger" href="<?php echo base_url('clientes/del/' . $fornecedor->cliente_id); ?>">Confirmar</a>
+                              <a class="btn btn-danger" href="<?php echo base_url('fornecedores/del/' . $fornecedor->cliente_id); ?>">Confirmar</a>
                             </div>
                           </div>
                         </div>
