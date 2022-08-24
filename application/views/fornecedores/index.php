@@ -65,20 +65,20 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <?php foreach ($clientes as $cliente): ?>
+                    <?php foreach ($fornecedores as $fornecedor): ?>
                     <tr>
-                      <td><?php echo $cliente->cliente_id ?></td>
-                      <td><?php echo $cliente->cliente_nome ?></td>
-                      <td><?php echo $cliente->cliente_cpf_cnpj ?></td>
-                      <td><?php echo ($cliente->cliente_tipo == 1 ? 'Pessoa física' : 'Pessoa jurídica') ?></td>
-                      <td class="text-center pr-4"><?php echo ($cliente->cliente_ativo == 1 ? '<span class="badge badge-info btn-sm">Sim</span>' : '<span class="badge badge-warning btn-sm">Não</span>') ?></td>
+                      <td><?php echo $fornecedor->cliente_id ?></td>
+                      <td><?php echo $fornecedor->cliente_nome ?></td>
+                      <td><?php echo $fornecedor->cliente_cpf_cnpj ?></td>
+                      <td><?php echo ($fornecedor->cliente_tipo == 1 ? 'Pessoa física' : 'Pessoa jurídica') ?></td>
+                      <td class="text-center pr-4"><?php echo ($fornecedor->cliente_ativo == 1 ? '<span class="badge badge-info btn-sm">Sim</span>' : '<span class="badge badge-warning btn-sm">Não</span>') ?></td>
                       <td class="text-right">
-                        <a title="Editar" href="<?php echo base_url('clientes/edit/'.$cliente->cliente_id); ?>" class="btn btn-sm btn-primary"><i class="fas fa-user-edit"></i></a>
-                        <a title="excluir" href="javascript(void)" data-toggle="modal" data-target="#cliente-<?php echo $cliente->cliente_id; ?>" class="btn btn-sm btn-danger"><i class="fas fa-user-times"></i></a>
+                        <a title="Editar" href="<?php echo base_url('clientes/edit/'.$fornecedor->cliente_id); ?>" class="btn btn-sm btn-primary"><i class="fas fa-user-edit"></i></a>
+                        <a title="excluir" href="javascript(void)" data-toggle="modal" data-target="#cliente-<?php echo $fornecedor->cliente_id; ?>" class="btn btn-sm btn-danger"><i class="fas fa-user-times"></i></a>
                       </td>
                     </tr>
                       <!--Modal delete user -->
-                      <div class="modal fade" id="cliente-<?php echo $cliente->cliente_id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal fade" id="cliente-<?php echo $fornecedor->cliente_id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
@@ -90,7 +90,7 @@
                             <div class="modal-body">Selecione  <b>Confirmar</b>  se deseja mesmo excluir.</div>
                             <div class="modal-footer">
                               <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                              <a class="btn btn-danger" href="<?php echo base_url('clientes/del/' . $cliente->cliente_id); ?>">Confirmar</a>
+                              <a class="btn btn-danger" href="<?php echo base_url('clientes/del/' . $fornecedor->cliente_id); ?>">Confirmar</a>
                             </div>
                           </div>
                         </div>
