@@ -30,18 +30,13 @@
                       <?php echo form_error('fornecedor_razao', '<small class="form-text text-danger">','</small>'); ?>
                     </div>
                     <div class="col-md-4">
-                      <label>Sobrenome</label>
-                      <input type="text" class="form-control form-control-user" name="fornecedor_sobrenome" placeholder="Segundo nome" value="<?php echo $fornecedor->fornecedor_sobrenome; ?>">
-                      <?php echo form_error('fornecedor_sobrenome', '<small class="form-text text-danger">','</small>'); ?>
-                    </div>
-                    <div class="col-md-4">
-                      <label>Data Nascimento</label>
-                      <input type="date" class="form-control form-control-user-date" name="fornecedor_data_nascimento" value="<?php echo $fornecedor->fornecedor_obs; ?>">
-                      <?php echo form_error('fornecedor_data_nascimento', '<small class="form-text text-danger">','</small>'); ?>
-                    </div>                    
+                      <label>Nome Fantasia</label>
+                      <input type="text" class="form-control form-control-user" name="fornecedor_nome_fantasia" placeholder="Nome fantasia" value="<?php echo $fornecedor->fornecedor_nome_fantasia; ?>">
+                      <?php echo form_error('fornecedor_nome_fantasia', '<small class="form-text text-danger">','</small>'); ?>
+                    </div>                   
                   </div>
 
-                  <div class="form-group row">                 
+                  <!-- <div class="form-group row">                 
                   <div class="col-md-2">
                       <?php if($fornecedor->fornecedor_tipo == 1): ?>
                       <label>CPF</label>
@@ -142,8 +137,7 @@
                     </div>
                   </div>  
                 </fieldset>  
-                
-                <input type="hidden" name="fornecedor_tipo" value="<?php echo $fornecedor->fornecedor_tipo; ?>"/>
+                 -->
                 <input type="hidden" name="fornecedor_id" value="<?php echo $fornecedor->fornecedor_id; ?>"/>
                 <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
                 <a title="Voltar" href="<?php echo base_url('fornecedors'); ?>" class="btn btn-success btn-sm ml-2">Voltar</a>

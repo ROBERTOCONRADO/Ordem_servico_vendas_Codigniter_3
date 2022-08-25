@@ -44,6 +44,7 @@ class Fornecedores extends CI_Controller {
                 ),
                 'fornecedor' => $this->core_model->get_by_id('fornecedores', array('fornecedor_id' => $fornecedor_id)),
             );
+            echo '<pre>';print_r($data['fornecedor']);exit();
             $this->load->view('layout/header', $data);
             $this->load->view('fornecedores/edit');
             $this->load->view('layout/footer');
