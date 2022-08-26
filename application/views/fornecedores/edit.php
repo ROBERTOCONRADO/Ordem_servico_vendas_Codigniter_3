@@ -107,7 +107,7 @@
                     </div> 
                     <div class="col-md-2">
                       <label>UF</label>
-                      <input type="text" class="form-control form-control-user" name="fornecedor_estado" placeholder="Estado" value="<?php echo $fornecedor->fornecedor_estado; ?>">
+                      <input type="text" class="form-control form-control-user uf" name="fornecedor_estado" placeholder="Estado" value="<?php echo $fornecedor->fornecedor_estado; ?>">
                       <?php echo form_error('fornecedor_estado', '<small class="form-text text-danger">','</small>'); ?>
                     </div> 
                   </div>
