@@ -24,18 +24,34 @@
                 <fieldset class="mt-4 border p-2">
                   <legend class="font-small"><i class="fas fa-user-tie"></i>&nbsp;Dados Pessoais</legend>
                   <div class="form-group row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                       <label>Razão Social</label>
                       <input type="text" class="form-control form-control-user" name="fornecedor_razao" placeholder="Razão Social" value="<?php echo $fornecedor->fornecedor_razao; ?>">
                       <?php echo form_error('fornecedor_razao', '<small class="form-text text-danger">','</small>'); ?>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                       <label>Nome Fantasia</label>
                       <input type="text" class="form-control form-control-user" name="fornecedor_nome_fantasia" placeholder="Nome fantasia" value="<?php echo $fornecedor->fornecedor_nome_fantasia; ?>">
                       <?php echo form_error('fornecedor_nome_fantasia', '<small class="form-text text-danger">','</small>'); ?>
                     </div>                   
                   </div>
-
+                  <div class="form-group row">
+                    <div class="col-md-4">
+                      <label>CNPJ</label>
+                      <input type="text" class="form-control form-control-user cnpj" name="fornecedor_cnpj" placeholder="Nome fantasia" value="<?php echo $fornecedor->fornecedor_cnpj; ?>">
+                      <?php echo form_error('fornecedor_cnpj', '<small class="form-text text-danger">','</small>'); ?>
+                    </div> 
+                    <div class="col-md-4">
+                      <label>Inscrição Estadual</label>
+                      <input type="text" class="form-control form-control-user" name="fornecedor_ie" placeholder="Inscrição estadual" value="<?php echo $fornecedor->fornecedor_ie; ?>">
+                      <?php echo form_error('fornecedor_ie', '<small class="form-text text-danger">','</small>'); ?>
+                    </div> 
+                    <div class="col-md-4">
+                      <label>Telefone Fixo</label>
+                      <input type="text" class="form-control form-control-user sp_celphones" name="fornecedor_telefone" placeholder="Telefone fixo" value="<?php echo $fornecedor->fornecedor_telefone; ?>">
+                      <?php echo form_error('fornecedor_telefone', '<small class="form-text text-danger">','</small>'); ?>
+                    </div> 
+                  </div>
                   <!-- <div class="form-group row">                 
                   <div class="col-md-2">
                       <?php if($fornecedor->fornecedor_tipo == 1): ?>
