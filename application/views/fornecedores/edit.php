@@ -52,6 +52,23 @@
                       <?php echo form_error('fornecedor_telefone', '<small class="form-text text-danger">','</small>'); ?>
                     </div> 
                   </div>
+                  <div class="form-group row">
+                    <div class="col-md-4">
+                      <label>Telefone Móvel</label>
+                      <input type="text" class="form-control form-control-user sp_celphones" name="fornecedor_celular" placeholder="Telefone móvel" value="<?php echo $fornecedor->fornecedor_celular; ?>">
+                      <?php echo form_error('fornecedor_celular', '<small class="form-text text-danger">','</small>'); ?>
+                    </div> 
+                    <div class="col-md-4">
+                      <label>E-mail</label>
+                      <input type="text" class="form-control form-control-user" name="fornecedor_email" placeholder="E-mail" value="<?php echo $fornecedor->fornecedor_email; ?>">
+                      <?php echo form_error('fornecedor_email', '<small class="form-text text-danger">','</small>'); ?>
+                    </div> 
+                    <div class="col-md-4">
+                      <label>Nome</label>
+                      <input type="text" class="form-control form-control-user" name="fornecedor_contato" placeholder="Nome do Fornecedor" value="<?php echo $fornecedor->fornecedor_contato; ?>">
+                      <?php echo form_error('fornecedor_contato', '<small class="form-text text-danger">','</small>'); ?>
+                    </div> 
+                  </div>  
                   <!-- <div class="form-group row">                 
                   <div class="col-md-2">
                       <?php if($fornecedor->fornecedor_tipo == 1): ?>
