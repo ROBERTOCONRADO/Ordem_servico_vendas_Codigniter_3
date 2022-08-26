@@ -71,7 +71,7 @@
                   </div>  
                 </fieldset>  
                 <fieldset class="mt-4 border p-2">
-                  <legend class="font-small"><i class="fas fa-user-tag"></i>&nbsp;Dados de Endereço</legend>
+                  <legend class="font-small"><i class="fas fa-map-marker-alt"></i>&nbsp;Dados de Endereço</legend>
                   <div class="form-group row">
                     <div class="col-md-4">
                       <label>Endereço</label>
@@ -111,6 +111,24 @@
                       <?php echo form_error('fornecedor_estado', '<small class="form-text text-danger">','</small>'); ?>
                     </div> 
                   </div>
+                </fieldset>
+                <fieldset class="mt-4 border p-2 mb-3">
+                <legend class="font-small"><i class="fas fa-tools"></i>&nbsp;Configurações</legend>
+                  <div class="form-group row">
+                    <div class="col-md-8">
+                      <label>Observações</label>
+                      <textarea class="form-control form-control-user" name="fornecedor_obs" placeholder="Observações"><?php echo $fornecedor->fornecedor_obs; ?></textarea>
+                      <?php echo form_error('fornecedor_obs', '<small class="form-text text-danger">','</small>'); ?>
+                    </div>
+                    <div class="col-md-4">
+                      <label>Fornecedor Ativo</label>
+                      <select class="custom-select" name="cliente_ativo" placeholder=""><?php echo $fornecedor->fornecedor_ativo; ?>
+                        <option value="0" <?php echo ($fornecedor->fornecedor_ativo == 0 ? 'selected' : ''); ?> >Não</option>
+                        <option value="1" <?php echo ($fornecedor->fornecedor_ativo == 1 ? 'selected' : ''); ?> >Sim</option>
+                      </select>
+                      <?php echo form_error('cliente_ativo', '<small class="form-text text-danger">','</small>'); ?>
+                    </div>
+                  </div>  
                 </fieldset>
 
                 <input type="hidden" name="fornecedor_id" value="<?php echo $fornecedor->fornecedor_id; ?>"/>
