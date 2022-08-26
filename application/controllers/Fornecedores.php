@@ -32,7 +32,7 @@ class Fornecedores extends CI_Controller {
     }
 
     public function edit($fornecedor_id = NULL) {
-        if(!$fornecedor_id || $this->core_model->get_by_id('fornecedores', array('fornecedor_id' => $fornecedor_id)))  {
+        if(!$fornecedor_id || !$this->core_model->get_by_id('fornecedores', array('fornecedor_id' => $fornecedor_id)))  {
             $this->session->set_flashdata('error', 'Fornecedor não encontrado!');
             redirect('fornecedores');
         }else {
@@ -44,7 +44,7 @@ class Fornecedores extends CI_Controller {
                 ),
                 'fornecedor' => $this->core_model->get_by_id('fornecedores', array('fornecedor_id' => $fornecedor_id)),
             );
-            echo '<pre>';print_r($data['fornecedor']);exit();
+
             $this->load->view('layout/header', $data);
             $this->load->view('fornecedores/edit');
             $this->load->view('layout/footer');
