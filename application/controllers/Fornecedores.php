@@ -36,29 +36,16 @@ class Fornecedores extends CI_Controller {
             $this->session->set_flashdata('error', 'Fornecedor não encontrado!');
             redirect('fornecedores');
         }else {
-            $this->form_validation->set_rules('fornecedor_nome', '', 'trim|required|min_length[4]|max_length[45]');
-            $this->form_validation->set_rules('fornecedor_sobrenome', '', 'trim|required|min_length[4]|max_length[150]');
+            $this->form_validation->set_rules('fornecedor_razao', '', 'trim|required|min_length[4]|max_length[200]|callback_check_razao_social');
+            $this->form_validation->set_rules('fornecedor_nome_fantasia', '', 'trim|required|min_length[4]|max_length[145]|callback_check_nome_fantasia');
             $this->form_validation->set_rules('fornecedor_data_nascimento', '', 'required');
 
-            $fornecedor_tipo = $this->input->post('fornecedor_tipo');
-            if ($fornecedor_tipo == 1) {
-                $this->form_validation->set_rules('fornecedor_cpf', '', 'trim|required|exact_length[14]|callback_valida_cpf');
-            }else {
-                $this->form_validation->set_rules('fornecedor_cnpj', '', 'trim|required|exact_length[18]|callback_valida_cnpj');
-            }
-
-            $this->form_validation->set_rules('fornecedor_rg_ie', '', 'trim|required|max_length[20]|callback_check_rg_ie');
-
-            $this->form_validation->set_rules('fornecedor_email', '', 'trim|required|valid_email|max_length[50]|callback_check_email');
-
-
-            if(!empty($this->input->post('fornecedor_telefone'))){
-                $this->form_validation->set_rules('fornecedor_telefone', '', 'trim|max_length[14]|callback_check_telefone');
-            }  
-            if(!empty($this->input->post('fornecedor_telefone'))){
-                $this->form_validation->set_rules('fornecedor_celular', '', 'trim|required|max_length[15]|callback_check_celular');
-            }
             
+            $this->form_validation->set_rules('fornecedor_cnpj', '', 'trim|required|exact_length[18]|callback_valida_cnpj');
+            $this->form_validation->set_rules('fornecedor_ie', '', 'trim|required|max_length[20]|callback_check_ie');
+            $this->form_validation->set_rules('fornecedor_email', '', 'trim|required|valid_email|max_length[50]|callback_check_email');
+            $this->form_validation->set_rules('fornecedor_telefone', '', 'trim|required|max_length[14]|callback_check_telefone');
+            $this->form_validation->set_rules('fornecedor_celular', '', 'trim|required|max_length[15]|callback_check_celular');
             $this->form_validation->set_rules('fornecedor_cep', '', 'trim|required|exact_length[9]');
             $this->form_validation->set_rules('fornecedor_endereco', '', 'trim|required|max_length[155]');
             $this->form_validation->set_rules('fornecedor_numero_endereco', '', 'trim|max_length[20]');
@@ -68,29 +55,22 @@ class Fornecedores extends CI_Controller {
             $this->form_validation->set_rules('fornecedor_estado', '', 'trim|required|exact_length[2]');
             $this->form_validation->set_rules('fornecedor_obs', '', 'max_length[500]');
 
-            if() {
-
+            if($this->form_validation->run()) {
+                exit('Validado');
             }else {
-                
-            }
-
-
-
-
-
-            $data = array(
-                'titulo' => 'Atualizar fornecedor',
-                'scripts' => array(
-                    'vendor/mask/jquery.mask.min.js',
-                    'vendor/mask/app.js',
-                ),
-                'fornecedor' => $this->core_model->get_by_id('fornecedores', array('fornecedor_id' => $fornecedor_id)),
-            );
-
-            $this->load->view('layout/header', $data);
-            $this->load->view('fornecedores/edit');
-            $this->load->view('layout/footer');
+                $data = array(
+                    'titulo' => 'Atualizar fornecedor',
+                    'scripts' => array(
+                        'vendor/mask/jquery.mask.min.js',
+                        'vendor/mask/app.js',
+                    ),
+                    'fornecedor' => $this->core_model->get_by_id('fornecedores', array('fornecedor_id' => $fornecedor_id)),
+                );
+    
+                $this->load->view('layout/header', $data);
+                $this->load->view('fornecedores/edit');
+                $this->load->view('layout/footer');
+            }  
         }
     }
-
 }    
