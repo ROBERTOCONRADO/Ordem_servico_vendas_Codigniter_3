@@ -217,7 +217,7 @@ class Clientes extends CI_Controller {
             $this->load->view('layout/footer');
         }
     }
-    }
+}
     public function check_rg_ie($cliente_rg_ie) {
         $cliente_id = $this->input->post('cliente_id');
         if($this->core_model->get_by_id('clientes', array('cliente_rg_ie' => $cliente_rg_ie, 'cliente_id !=' => $cliente_id))) {

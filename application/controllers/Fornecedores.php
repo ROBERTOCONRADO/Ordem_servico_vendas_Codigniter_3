@@ -40,9 +40,9 @@ class Fornecedores extends CI_Controller {
             $this->form_validation->set_rules('fornecedor_nome_fantasia', '', 'trim|required|min_length[4]|max_length[145]|callback_check_nome_fantasia');
             $this->form_validation->set_rules('fornecedor_cnpj', '', 'trim|required|exact_length[18]|callback_valida_cnpj');
             $this->form_validation->set_rules('fornecedor_ie', '', 'trim|required|max_length[20]|callback_check_ie');
-            // $this->form_validation->set_rules('fornecedor_email', '', 'trim|required|valid_email|max_length[50]|callback_check_email');
-            // $this->form_validation->set_rules('fornecedor_telefone', '', 'trim|required|max_length[14]|callback_check_telefone');
-            // $this->form_validation->set_rules('fornecedor_celular', '', 'trim|required|max_length[15]|callback_check_celular');
+            $this->form_validation->set_rules('fornecedor_email', '', 'trim|required|valid_email|max_length[50]|callback_check_email');
+            $this->form_validation->set_rules('fornecedor_telefone', '', 'trim|required|max_length[14]|callback_check_telefone');
+            $this->form_validation->set_rules('fornecedor_celular', '', 'trim|required|max_length[15]|callback_check_celular');
             $this->form_validation->set_rules('fornecedor_cep', '', 'trim|required|exact_length[9]');
             $this->form_validation->set_rules('fornecedor_endereco', '', 'trim|required|max_length[155]');
             $this->form_validation->set_rules('fornecedor_numero_endereco', '', 'trim|max_length[20]');
@@ -53,7 +53,36 @@ class Fornecedores extends CI_Controller {
             $this->form_validation->set_rules('fornecedor_obs', '', 'max_length[500]');
 
             if($this->form_validation->run()) {
-                exit('Validado');
+                $data = elements(
+                    array(
+                        'fornecedor_razao',
+                        'fornecedor_nome_fantasia',
+                        'fornecedor_cnpj',
+                        'fornecedor_ie',
+                        'fornecedor_email',
+                        'fornecedor_telefone', 
+                        'fornecedor_celular',
+                        'fornecedor_endereco',
+                        'fornecedor_numero_endereco',
+                        'fornecedor_complemento',
+                        'fornecedor_bairro',
+                        'fornecedor_cep',
+                        'fornecedor_cidade',
+                        'fornecedor_estado',
+                        'fornecedor_ativo',
+                        'fornecedor_obs',
+                    ), $this->input->post()
+                );
+                
+                $data['fornecedor_estado'] = strtoupper($this->input->post('fornecedor_estado'));
+    
+                $data = html_escape($data);
+    
+                $this->core_model->update('fornecedores', $data, array('fornecedor_id' => $fornecedor_id));
+    
+                redirect('fornecedores');
+    
+                // echo '<pre>';print_r($data);exit();
             }else {
                 $data = array(
                     'titulo' => 'Atualizar fornecedor',
@@ -91,7 +120,7 @@ class Fornecedores extends CI_Controller {
     public function check_ie($fornecedor_ie) {
         $fornecedor_id = $this->input->post('fornecedor_id');
         if($this->core_model->get_by_id('fornecedores', array('fornecedor_ie' => $fornecedor_ie, 'fornecedor_id !=' => $fornecedor_id))) {
-            $this->form_validation->set_message('check_ie', 'Esse documento já existe!');
+            $this->form_validation->set_message('check_ie', 'Inscrição estadual já existente!');
             return FALSE;
         }else {
             return TRUE;

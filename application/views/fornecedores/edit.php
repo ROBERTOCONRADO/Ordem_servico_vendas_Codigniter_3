@@ -133,7 +133,7 @@
 
                 <input type="hidden" name="fornecedor_id" value="<?php echo $fornecedor->fornecedor_id; ?>"/>
                 <button type="submit" class="btn btn-primary btn-sm mt-3">Salvar</button>
-                <a title="Voltar" href="<?php echo base_url('fornecedors'); ?>" class="btn btn-success btn-sm ml-2 mt-3">Voltar</a>
+                <a title="Voltar" href="<?php echo base_url($this->router->fetch_class()); ?>" class="btn btn-success btn-sm ml-2 mt-3">Voltar</a>
               
               </form>
             </div>
