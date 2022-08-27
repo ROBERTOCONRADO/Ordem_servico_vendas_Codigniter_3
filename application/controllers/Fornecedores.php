@@ -38,8 +38,8 @@ class Fornecedores extends CI_Controller {
         }else {
             $this->form_validation->set_rules('fornecedor_razao', '', 'trim|required|min_length[4]|max_length[200]|callback_check_razao_social');
             $this->form_validation->set_rules('fornecedor_nome_fantasia', '', 'trim|required|min_length[4]|max_length[145]|callback_check_nome_fantasia');
-            // $this->form_validation->set_rules('fornecedor_cnpj', '', 'trim|required|exact_length[18]|callback_valida_cnpj');
-            // $this->form_validation->set_rules('fornecedor_ie', '', 'trim|required|max_length[20]|callback_check_ie');
+            $this->form_validation->set_rules('fornecedor_cnpj', '', 'trim|required|exact_length[18]|callback_valida_cnpj');
+            $this->form_validation->set_rules('fornecedor_ie', '', 'trim|required|max_length[20]|callback_check_ie');
             // $this->form_validation->set_rules('fornecedor_email', '', 'trim|required|valid_email|max_length[50]|callback_check_email');
             // $this->form_validation->set_rules('fornecedor_telefone', '', 'trim|required|max_length[14]|callback_check_telefone');
             // $this->form_validation->set_rules('fornecedor_celular', '', 'trim|required|max_length[15]|callback_check_celular');
@@ -132,11 +132,11 @@ class Fornecedores extends CI_Controller {
             return false;
         }
 
-        if ($this->input->post('cliente_id')) {
+        if ($this->input->post('fornecedor_id')) {
 
-            $cliente_id = $this->input->post('cliente_id');
+            $fornecedor_id = $this->input->post('fornecedor_id');
 
-            if ($this->core_model->get_by_id('clientes', array('cliente_id !=' => $cliente_id, 'cliente_cpf_cnpj' => $cnpj))) {
+            if ($this->core_model->get_by_id('fornecedores', array('fornecedor_id !=' => $fornecedor_id, 'fornecedor_cnpj' => $cnpj))) {
                 $this->form_validation->set_message('valida_cnpj', 'Esse CNPJ já existe');
                 return FALSE;
             }
