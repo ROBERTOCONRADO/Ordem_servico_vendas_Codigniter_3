@@ -19,8 +19,10 @@
           <div class="card shadow mb-4">
             
             <div class="card-body">
-              <form class="user" method="POST" name="form_edit">
-                <p><strong><i class="fas fa-clock"></i>&nbsp;Última Alteração:&nbsp;</strong><?php echo formata_data_banco_com_hora($fornecedor->fornecedor_data_alteracao); ?></p>
+              <form class="user" method="POST" name="form_add">
+                <?php if (isset($fornecedor)): ?>
+                <p><strong><i class="fas fa-clock"></i>&nbsp;Última Alteração:&nbsp;</strong><?php echo formata_data_banco_com_hora($fornecedor->fornecedor_data_alteracao); ?></p> 
+                <?php endif; ?>
                 <fieldset class="mt-4 border p-2">
                   <legend class="font-small"><i class="fas fa-user-tag"></i>&nbsp;Dados Principais</legend>
                   <div class="form-group row">
@@ -117,21 +119,20 @@
                   <div class="form-group row">
                     <div class="col-md-8">
                       <label>Observações</label>
-                      <textarea class="form-control form-control-user" name="fornecedor_obs" placeholder="Observações"><?php echo $fornecedor->fornecedor_obs; ?></textarea>
+                      <textarea class="form-control form-control-user" name="fornecedor_obs" placeholder="Observações"><?php echo set_value('fornecedor_obs'); ?></textarea>
                       <?php echo form_error('fornecedor_obs', '<small class="form-text text-danger">','</small>'); ?>
                     </div>
                     <div class="col-md-4">
                       <label>Fornecedor Ativo</label>
                       <select class="custom-select" name="cliente_ativo" placeholder=""><?php echo $fornecedor->fornecedor_ativo; ?>
-                        <option value="0" <?php echo ($fornecedor->fornecedor_ativo == 0 ? 'selected' : ''); ?> >Não</option>
-                        <option value="1" <?php echo ($fornecedor->fornecedor_ativo == 1 ? 'selected' : ''); ?> >Sim</option>
+                        <option value="0">Não</option>
+                        <option value="1">Sim</option>
                       </select>
                       <?php echo form_error('cliente_ativo', '<small class="form-text text-danger">','</small>'); ?>
                     </div>
                   </div>  
                 </fieldset>
 
-                <input type="hidden" name="fornecedor_id" value="<?php echo $fornecedor->fornecedor_id; ?>"/>
                 <button type="submit" class="btn btn-primary btn-sm mt-3">Salvar</button>
                 <a title="Voltar" href="<?php echo base_url($this->router->fetch_class()); ?>" class="btn btn-success btn-sm ml-2 mt-3">Voltar</a>
               
