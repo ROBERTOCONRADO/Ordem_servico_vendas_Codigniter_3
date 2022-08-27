@@ -37,10 +37,7 @@ class Fornecedores extends CI_Controller {
             redirect('fornecedores');
         }else {
             $this->form_validation->set_rules('fornecedor_razao', '', 'trim|required|min_length[4]|max_length[200]|callback_check_razao_social');
-
-
-
-            // $this->form_validation->set_rules('fornecedor_nome_fantasia', '', 'trim|required|min_length[4]|max_length[145]|callback_check_nome_fantasia');
+            $this->form_validation->set_rules('fornecedor_nome_fantasia', '', 'trim|required|min_length[4]|max_length[145]|callback_check_nome_fantasia');
             // $this->form_validation->set_rules('fornecedor_cnpj', '', 'trim|required|exact_length[18]|callback_valida_cnpj');
             // $this->form_validation->set_rules('fornecedor_ie', '', 'trim|required|max_length[20]|callback_check_ie');
             // $this->form_validation->set_rules('fornecedor_email', '', 'trim|required|valid_email|max_length[50]|callback_check_email');
@@ -77,6 +74,15 @@ class Fornecedores extends CI_Controller {
         $fornecedor_id = $this->input->post('fornecedor_id');
         if($this->core_model->get_by_id('fornecedores', array('fornecedor_razao' => $fornecedor_razao, 'fornecedor_id !=' => $fornecedor_id))) {
             $this->form_validation->set_message('check_razao_social', 'Esta razão social já existe!');
+            return FALSE;
+        }else {
+            return TRUE;
+        }
+    }
+    public function check_nome_fantasia($fornecedor_nome_fantasia) {
+        $fornecedor_id = $this->input->post('fornecedor_id');
+        if($this->core_model->get_by_id('fornecedores', array('fornecedor_nome_fantasia' => $fornecedor_nome_fantasia, 'fornecedor_id !=' => $fornecedor_id))) {
+            $this->form_validation->set_message('check_nome_fantasia', 'Esse nome fantasia já existe!');
             return FALSE;
         }else {
             return TRUE;
