@@ -22,54 +22,41 @@
               <form class="user" method="POST" name="form_edit">
                 <p><strong><i class="fas fa-clock"></i>&nbsp;Última Alteração:&nbsp;</strong><?php echo formata_data_banco_com_hora($vendedor->vendedor_data_alteracao); ?></p>
                 <fieldset class="mt-4 border p-2">
-                  <legend class="font-small"><i class="fas fa-user-tag"></i>&nbsp;Dados Principais</legend>
+                  <legend class="font-small"><i class="fas fa-user-secret"></i>&nbsp;Dados Pessoais</legend>
                   <div class="form-group row">
                     <div class="col-md-6">
-                      <label>Razão Social</label>
-                      <input type="text" class="form-control form-control-user" name="vendedor_razao" placeholder="Razão Social" value="<?php echo $vendedor->vendedor_razao; ?>">
-                      <?php echo form_error('vendedor_razao', '<small class="form-text text-danger">','</small>'); ?>
+                      <label>Nome Completo</label>
+                      <input type="text" class="form-control form-control-user" name="vendedor_nome_completo" placeholder="Nome completo" value="<?php echo $vendedor->vendedor_nome_completo; ?>">
+                      <?php echo form_error('vendedor_nome_completo', '<small class="form-text text-danger">','</small>'); ?>
                     </div>
-                    <div class="col-md-6">
-                      <label>Nome Fantasia</label>
-                      <input type="text" class="form-control form-control-user" name="vendedor_nome_fantasia" placeholder="Nome fantasia" value="<?php echo $vendedor->vendedor_nome_fantasia; ?>">
-                      <?php echo form_error('vendedor_nome_fantasia', '<small class="form-text text-danger">','</small>'); ?>
+                    <div class="col-md-3">
+                      <label>CPF</label>
+                      <input type="text" class="form-control form-control-user cpf" name="vendedor_cpf" placeholder="CPF do Vendedor" value="<?php echo $vendedor->vendedor_cpf; ?>">
+                      <?php echo form_error('vendedor_cpf', '<small class="form-text text-danger">','</small>'); ?>
                     </div>                   
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-md-4">
-                      <label>CNPJ</label>
-                      <input type="text" class="form-control form-control-user cnpj" name="vendedor_cnpj" placeholder="Nome fantasia" value="<?php echo $vendedor->vendedor_cnpj; ?>">
-                      <?php echo form_error('vendedor_cnpj', '<small class="form-text text-danger">','</small>'); ?>
-                    </div> 
-                    <div class="col-md-4">
-                      <label>Inscrição Estadual</label>
-                      <input type="text" class="form-control form-control-user" name="vendedor_ie" placeholder="Inscrição estadual" value="<?php echo $vendedor->vendedor_ie; ?>">
-                      <?php echo form_error('vendedor_ie', '<small class="form-text text-danger">','</small>'); ?>
-                    </div> 
-                    <div class="col-md-4">
-                      <label>Telefone Fixo</label>
-                      <input type="text" class="form-control form-control-user sp_celphones" name="vendedor_telefone" placeholder="Telefone fixo" value="<?php echo $vendedor->vendedor_telefone; ?>">
-                      <?php echo form_error('vendedor_telefone', '<small class="form-text text-danger">','</small>'); ?>
-                    </div> 
-                  </div>
-                  <div class="form-group row">
-                    <div class="col-md-4">
-                      <label>Celular</label>
-                      <input type="text" class="form-control form-control-user sp_celphones" name="vendedor_celular" placeholder="Telefone móvel" value="<?php echo $vendedor->vendedor_celular; ?>">
-                      <?php echo form_error('vendedor_celular', '<small class="form-text text-danger">','</small>'); ?>
-                    </div> 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
+                      <label>RG</label>
+                      <input type="text" class="form-control form-control-user rg" name="vendedor_rg" placeholder="RG do vendedor" value="<?php echo $vendedor->vendedor_rg; ?>">
+                      <?php echo form_error('vendedor_rg', '<small class="form-text text-danger">','</small>'); ?>
+                    </div>  
+                    <div class="col-md-6">
                       <label>E-mail</label>
                       <input type="email" class="form-control form-control-user" name="vendedor_email" placeholder="E-mail" value="<?php echo $vendedor->vendedor_email; ?>">
                       <?php echo form_error('vendedor_email', '<small class="form-text text-danger">','</small>'); ?>
                     </div> 
-                    <div class="col-md-4">
-                      <label>Nome do Contato</label>
-                      <input type="text" class="form-control form-control-user" name="vendedor_contato" placeholder="Nome do vendedor" value="<?php echo $vendedor->vendedor_contato; ?>">
-                      <?php echo form_error('vendedor_contato', '<small class="form-text text-danger">','</small>'); ?>
+                    <div class="col-md-3">
+                      <label>Telefone Fixo</label>
+                      <input type="text" class="form-control form-control-user sp_celphones" name="vendedor_telefone" placeholder="Telefone fixo" value="<?php echo $vendedor->vendedor_telefone; ?>">
+                      <?php echo form_error('vendedor_telefone', '<small class="form-text text-danger">','</small>'); ?>
                     </div> 
+                    <div class="col-md-3">
+                      <label>Celular</label>
+                      <input type="text" class="form-control form-control-user sp_celphones" name="vendedor_celular" placeholder="Telefone móvel" value="<?php echo $vendedor->vendedor_celular; ?>">
+                      <?php echo form_error('vendedor_celular', '<small class="form-text text-danger">','</small>'); ?>
+                    </div>
                   </div>  
-                </fieldset>  
+                </fieldset>
+    
                 <fieldset class="mt-4 border p-2">
                   <legend class="font-small"><i class="fas fa-map-marker-alt"></i>&nbsp;Dados de Endereço</legend>
                   <div class="form-group row">
@@ -115,13 +102,18 @@
                 <fieldset class="mt-4 border p-2 mb-3">
                 <legend class="font-small"><i class="fas fa-tools"></i>&nbsp;Configurações</legend>
                   <div class="form-group row">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                       <label>Observações</label>
                       <textarea class="form-control form-control-user" name="vendedor_obs" placeholder="Observações"><?php echo $vendedor->vendedor_obs; ?></textarea>
                       <?php echo form_error('vendedor_obs', '<small class="form-text text-danger">','</small>'); ?>
                     </div>
-                    <div class="col-md-4">
-                      <label>vendedor Ativo</label>
+                    <div class="col-md-3">
+                      <label>Matrícula</label>
+                      <input type="text" class="form-control form-control-user" name="vendedor_codigo" placeholder="Matrícula" value="<?php echo $vendedor->vendedor_codigo; ?>">
+                      <?php echo form_error('vendedor_codigo', '<small class="form-text text-danger">','</small>'); ?>
+                    </div>
+                    <div class="col-md-3">
+                      <label>Vendedor Ativo</label>
                       <select class="custom-select" name="cliente_ativo" placeholder=""><?php echo $vendedor->vendedor_ativo; ?>
                         <option value="0" <?php echo ($vendedor->vendedor_ativo == 0 ? 'selected' : ''); ?> >Não</option>
                         <option value="1" <?php echo ($vendedor->vendedor_ativo == 1 ? 'selected' : ''); ?> >Sim</option>
