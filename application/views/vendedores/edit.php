@@ -38,7 +38,9 @@
                       <label>RG</label>
                       <input type="text" class="form-control form-control-user rg" name="vendedor_rg" placeholder="RG do vendedor" value="<?php echo $vendedor->vendedor_rg; ?>">
                       <?php echo form_error('vendedor_rg', '<small class="form-text text-danger">','</small>'); ?>
-                    </div>  
+                    </div> 
+                  </div>  
+                  <div class="form-group row">   
                     <div class="col-md-6">
                       <label>E-mail</label>
                       <input type="email" class="form-control form-control-user" name="vendedor_email" placeholder="E-mail" value="<?php echo $vendedor->vendedor_email; ?>">
