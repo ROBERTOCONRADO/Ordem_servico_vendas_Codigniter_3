@@ -37,10 +37,10 @@ class Vendedores extends CI_Controller {
         }else {
             $this->form_validation->set_rules('vendedor_nome_completo', '', 'trim|required|min_length[4]|max_length[200]');
             $this->form_validation->set_rules('vendedor_cpf', '', 'trim|required|exact_length[18]|callback_valida_cpf');
-            $this->form_validation->set_rules('vendedor_rg', '', 'trim|required|max_length[20]|callback_check_vendedor_rg');
-            $this->form_validation->set_rules('vendedor_email', '', 'trim|required|valid_email|max_length[50]|callback_check_email');
-            $this->form_validation->set_rules('vendedor_telefone', '', 'trim|required|max_length[14]|callback_check_telefone');
-            $this->form_validation->set_rules('vendedor_celular', '', 'trim|required|max_length[15]|callback_check_celular');
+            // $this->form_validation->set_rules('vendedor_rg', '', 'trim|required|max_length[20]|callback_check_vendedor_rg');
+            // $this->form_validation->set_rules('vendedor_email', '', 'trim|required|valid_email|max_length[50]|callback_check_email');
+            // $this->form_validation->set_rules('vendedor_telefone', '', 'trim|required|max_length[14]|callback_check_telefone');
+            // $this->form_validation->set_rules('vendedor_celular', '', 'trim|required|max_length[15]|callback_check_celular');
             $this->form_validation->set_rules('vendedor_cep', '', 'trim|required|exact_length[9]');
             $this->form_validation->set_rules('vendedor_endereco', '', 'trim|required|max_length[155]');
             $this->form_validation->set_rules('vendedor_numero_endereco', '', 'trim|max_length[20]');
@@ -95,6 +95,86 @@ class Vendedores extends CI_Controller {
                 $this->load->view('vendedores/edit');
                 $this->load->view('layout/footer');
             }  
+        }
+    }
+    public function check_ie($vendedor_ie) {
+        $vendedor_id = $this->input->post('vendedor_id');
+        if($this->core_model->get_by_id('vendedores', array('vendedor_ie' => $vendedor_ie, 'vendedor_id !=' => $vendedor_id))) {
+            $this->form_validation->set_message('check_ie', 'Inscrição estadual já existente!');
+            return FALSE;
+        }else {
+            return TRUE;
+        }
+    }
+    public function valida_cpf($cpf) {
+
+        if ($this->input->post('vendedor_id')) {
+
+            $cliente_id = $this->input->post('vendedor_id');
+
+            if ($this->core_model->get_by_id('vendedores', array('vendedor_id !=' => $vendedor_id, 'vendedor_cpf' => $cpf))) {
+                $this->form_validation->set_message('valida_cpf', 'Este CPF já existe');
+                return FALSE;
+            }
+        }
+
+        $cpf = str_pad(preg_replace('/[^0-9]/', '', $cpf), 11, '0', STR_PAD_LEFT);
+        // Verifica se nenhuma das sequências abaixo foi digitada, caso seja, retorna falso
+        if (strlen($cpf) != 11 || $cpf == '00000000000' || $cpf == '11111111111' || $cpf == '22222222222' || $cpf == '33333333333' || $cpf == '44444444444' || $cpf == '55555555555' || $cpf == '66666666666' || $cpf == '77777777777' || $cpf == '88888888888' || $cpf == '99999999999') {
+
+            $this->form_validation->set_message('valida_cpf', 'Por favor digite um CPF válido');
+            return FALSE;
+        } else {
+            // Calcula os números para verificar se o CPF é verdadeiro
+            for ($t = 9; $t < 11; $t++) {
+                for ($d = 0, $c = 0; $c < $t; $c++) {
+
+                    $d += $cpf[$c] * (($t + 1) - $c); 
+                }
+                $d = ((10 * $d) % 11) % 10;
+                if ($cpf[$c] != $d) {
+                    $this->form_validation->set_message('valida_cpf', 'Por favor digite um CPF válido');
+                    return FALSE;
+                }
+            }
+            return TRUE;
+        }
+    }
+    public function check_email($vendedor_email) {
+        $vendedor_id = $this->input->post('vendedor_id');
+        if($this->core_model->get_by_id('vendedores', array('vendedor_email' => $vendedor_email, 'vendedor_id !=' => $vendedor_id))) {
+            $this->form_validation->set_message('check_email', 'Esse e-mail já existe!');
+            return FALSE;
+        }else {
+            return TRUE;
+        }
+    }
+    public function check_telefone($vendedor_telefone) {
+        $vendedor_id = $this->input->post('vendedor_id');
+        if($this->core_model->get_by_id('vendedores', array('vendedor_telefone' => $vendedor_telefone, 'vendedor_id !=' => $vendedor_id))) {
+            $this->form_validation->set_message('check_telefone', 'Esse telefone já existe!');
+            return FALSE;
+        }else {
+            return TRUE;
+        }
+    }
+    public function check_celular($vendedor_celular) {
+        $vendedor_id = $this->input->post('vendedor_id');
+        if($this->core_model->get_by_id('vendedores', array('vendedor_celular' => $vendedor_celular, 'vendedor_id !=' => $vendedor_id))) {
+            $this->form_validation->set_message('check_celular', 'Número celular já existente!');
+            return FALSE;
+        }else {
+            return TRUE;
+        }
+    }
+
+    public function del($vendedor_id = NULL) {
+        if (!$vendedor_id || !$this->core_model->get_by_id('vendedores', array('vendedor_id' => $vendedor_id))) {
+            $this->session->set_flashdata('error', 'vendedor não encontrado');
+            redirect('vendedores');
+        }else {
+            $this->core_model->delete('vendedores', array('vendedor_id' => $vendedor_id));
+            redirect('vendedores');
         }
     }
 }    
