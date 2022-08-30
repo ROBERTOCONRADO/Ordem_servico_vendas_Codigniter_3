@@ -20,8 +20,6 @@
             
             <div class="card-body">
               <form class="user" method="POST" name="form_add">
-                <?php echo base_url(); ?> 
-                <p><strong><i class="fas fa-clock"></i>&nbsp;Última Alteração:&nbsp;</strong><?php echo formata_data_banco_com_hora($vendedor->vendedor_data_alteracao); ?></p>
                 <fieldset class="mt-4 border p-2">
                   <legend class="font-small"><i class="fas fa-user-secret"></i>&nbsp;Dados Pessoais</legend>
                   <div class="form-group row">
@@ -107,13 +105,12 @@
                   <div class="form-group row">
                     <div class="col-md-6">
                       <label>Observações</label>
-                      <textarea class="form-control form-control-user" name="vendedor_obs" placeholder="Observações"><?php echo $vendedor->vendedor_obs; ?></textarea>
+                      <textarea class="form-control form-control-user" name="vendedor_obs" placeholder="Observações"><?php echo set_value('vendedor_obs'); ?></textarea>
                       <?php echo form_error('vendedor_obs', '<small class="form-text text-danger">','</small>'); ?>
                     </div>
                     <div class="col-md-3">
                       <label>Matrícula</label>
-                      <input type="text" class="form-control form-control-user" name="vendedor_codigo" placeholder="Matrícula" value="<?php echo $vendedor_codigo ?>" readonly="">
-                      <?php echo form_error('vendedor_codigo', '<small class="form-text text-danger">','</small>'); ?>
+                      <input type="text" class="form-control form-control-user" name="vendedor_codigo" placeholder="Matrícula" value="<?php echo $vendedor_codigo ?>" readonly="">   
                     </div>
                     <div class="col-md-3">
                       <label>Vendedor Ativo</label>
@@ -126,7 +123,6 @@
                   </div>  
                 </fieldset>
 
-                <input type="hidden" name="vendedor_id" value="<?php echo $vendedor->vendedor_id; ?>"/>
                 <button type="submit" class="btn btn-primary btn-sm mt-3">Salvar</button>
                 <a title="Voltar" href="<?php echo base_url($this->router->fetch_class()); ?>" class="btn btn-success btn-sm ml-2 mt-3">Voltar</a>
               
