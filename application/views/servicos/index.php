@@ -68,8 +68,8 @@
                     <tr>
                       <td><?php echo $servico->servico_id ?></td>
                       <td><?php echo $servico->servico_nome ?></td>
-                      <td><?php echo $servico->servico_preco ?></td>
-                      <td><?php echo $servico->servico_descricao ?></td>
+                      <td><?php echo 'R$&nbsp;'.$servico->servico_preco ?></td>
+                      <td><?php echo word_limiter($servico->servico_descricao, 12); ?></td>
                       
                       <td class="text-center pr-4"><?php echo ($servico->servico_ativo == 1 ? '<span class="badge badge-info btn-sm">Sim</span>' : '<span class="badge badge-warning btn-sm">Não</span>') ?></td>
                       <td class="text-right">
