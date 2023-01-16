@@ -1,7 +1,7 @@
 .DS_Store
 
-application/cache/config/*
-application/config/*
+application/cache/*
+application/system/*
 !application/cache/index.html
 
 application/logs/*
